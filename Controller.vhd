@@ -33,18 +33,19 @@ begin
 				ALUop         <= "10";
 				MemWrite      <= '0';
 				ALUsrc        <= '0';
-        RegWrite      <= '1' after 10 ns;
-			when "001100" => -- and immediate(andi): 0x0c NOT SURE
-        RegDst        <= '0';
+				RegWrite      <= '1' after 10 ns;
+		when "001100" => -- and immediate(andi): 0x0C 
+				RegDst        <= '0';
 				Jump          <= '0';
 				Branch        <= '0';
 				MemRead       <= '0';
 				memToRegister <= '0';
-				ALUop         <= "00";
+				ALUop         <= "11"; -- its 1X = 10/11 ["00" previous]
 				MemWrite      <= '0';
 				ALUsrc        <= '1';
-        RegWrite      <= '1' after 10 ns;
-			when "100011" => -- load word(lw): 0x23
+				RegWrite      <= '1' after 10 ns;
+		
+		when "100011" => -- load word(lw): 0x23
 				RegDst        <= '0';
 				Jump          <= '0';
 				Branch        <= '0';
@@ -54,7 +55,7 @@ begin
 				MemWrite      <= '0';
 				ALUsrc        <= '1';
 				RegWrite      <= '1' after 10 ns;
-			when "101011" => -- store word(sw): 0x2B
+		when "101011" => -- store word(sw): 0x2B
 				RegDst        <= 'X'; -- don't care
 				Jump          <= '0';
 				Branch        <= '0' after 2 ns;
@@ -64,7 +65,7 @@ begin
 				MemWrite      <= '1';
 				ALUsrc        <= '1';
 				RegWrite      <= '0';
-			when "000100" => -- Branch equal(beq): 0x04
+		when "000100" => -- Branch equal(beq): 0x04
 				RegDst        <= 'X'; -- don't care
 				Jump          <= '0';
 				Branch        <= '1' after 2 ns;
@@ -74,7 +75,7 @@ begin
 				MemWrite      <= '0';
 				ALUsrc        <= '0';
 				RegWrite      <= '0';
-			when "000010" => -- Jump(j): 0x02
+		when "000010" => -- Jump(j): 0x02
 				RegDst        <= 'X';
 				Jump          <= '1';
 				Branch        <= '0';
@@ -84,16 +85,16 @@ begin
 				MemWrite      <= '0';
 				ALUsrc        <= '0';
 				RegWrite      <= '0';
-			when OTHERS => NULL; --implement other commands down here
+		when "001000" => -- SUBI subtract immediate
 				RegDst        <= '0';
 				Jump          <= '0';
 				Branch        <= '0';
 				MemRead       <= '0';
 				memToRegister <= '0';
-				ALUop         <= "00";
+				ALUop         <= "01";
 				MemWrite      <= '0';
-				ALUsrc        <= '0';
-        RegWrite      <= '0';
+				ALUsrc        <= '1';
+				RegWrite      <= '1' after 10 ns;
         
     end case ;
   end process ; -- Control

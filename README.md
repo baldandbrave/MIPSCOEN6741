@@ -1,5 +1,7 @@
 # MIPS
+
 MIPS Processor Design for COEN6741
+
 ## Project Requirements
 
 - 32 bit pipelined MIPS
@@ -7,6 +9,7 @@ MIPS Processor Design for COEN6741
 - Structural harzards free, data harzard and control harzard handled by **stalling**
 
 ## Useful Repositories
+
 https://github.com/PiJoules/MIPS-processor
 
 https://github.com/cm4233/MIPS-Processor-VHDL/tree/master/VHDL%20Codes

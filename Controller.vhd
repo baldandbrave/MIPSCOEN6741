@@ -24,7 +24,7 @@ begin
   begin
     case( opCode ) is
     -- ANDI
-      when "000000" => -- R type cmds: and, add, sub, xor, jr: 0x00
+    	when "000000" => -- R type cmds: and, add, sub, xor, jr: 0x00
 				RegDst        <= '1';
 				Jump          <= '0';
 				Branch        <= '0';
@@ -95,6 +95,16 @@ begin
 				MemWrite      <= '0';
 				ALUsrc        <= '1';
 				RegWrite      <= '1' after 10 ns;
+		when OTHERS => NULL; --implement other commands down here
+				RegDst        <= '0';
+				Jump          <= '0';
+				Branch        <= '0';
+				MemRead       <= '0';
+				memToRegister <= '0';
+				ALUop         <= "00";
+				MemWrite      <= '0';
+				ALUsrc        <= '0';
+        RegWrite      <= '0';
         
     end case ;
   end process ; -- Control

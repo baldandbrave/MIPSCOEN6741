@@ -8,7 +8,7 @@ entity ALU is
   port (
     LeftOperand  : in std_logic_vector(31 downto 0);
     RightOperand : in std_logic_vector(31 downto 0);
-    ALUControl   : in std_logic_vector(3 downto 0);
+    ALUControl   : in std_logic_vector(2 downto 0);
     ALUResult    : out std_logic_vector(31 downto 0) ;
     Zero: out std_logic
   ) ;
@@ -24,18 +24,16 @@ begin
     begin
         case( ALUControl ) is
         
-            when "0000" => -- and
+            when "000" => -- and
                 ALUResultSignal <= LeftOperand and RightOperand;
-            when "0001" => -- or
+            when "001" => -- or
                 ALUResultSignal <= LeftOperand or RightOperand;
-            when "0010" => -- add
+            when "010" => -- add
                 ALUResultSignal <= std_logic_vector(unsigned(LeftOperand) + unsigned(RightOperand));
-            when "0110" => -- sub
+            when "110" => -- sub
                 ALUResultSignal <= std_logic_vector(unsigned(LeftOperand) - unsigned(RightOperand));
-            when "0111" => -- slt, set less than
+            when "111" => -- slt, set less than
                 ALUResultSignal <= std_logic_vector(LeftOperand < RightOperand);
-            when "1100" => -- nor
-                ALUResultSignal <= LeftOperand nor RightOperand;
             when others => -- TODO: nop?
                 ALUResultSignal <= (others => 0); -- set all bits to 0
         end case ;

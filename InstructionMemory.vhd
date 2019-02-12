@@ -14,9 +14,9 @@ port (
  InstructionAddress: in std_logic_vector(31 downto 0);
  InstructionOut: out  std_logic_vector(31 downto 0)
 );
-
-architecture Behavioral OF InstructionMemory IS
-	type RAM_16_x_32 is array(0 to 15) OF std_logic_vector(31 downto 0);
+end InstructionMemory;
+architecture Behavioral of InstructionMemory is
+	type RAM_16_x_32 is array(0 to 15) of std_logic_vector(31 downto 0);
 	signal IM : RAM_16_x_32 := (
                                 x"01285024", -- 0x0040 0000: and 	$t2, 	$t1, 	$t0
                                 x"018b6825", -- 0x0040 0004: or 	$t5, 	$t4, 	$t3

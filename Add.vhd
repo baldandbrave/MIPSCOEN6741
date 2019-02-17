@@ -1,16 +1,17 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity Add is
-port (
-InputAddress: in std_logic_vector(31 downto 0);
-Addout: out std_logic_vector(31 downto 0)
+ entity Adder is
+	port (
+		Adder_input: in std_logic_vector(31 downto 0);
+		Adder_output: out std_logic_vector(31 downto 0)
 	);
-end entity;
+end Adder;	
 
-architecture Behavioral of Add is
-	signal
-		begin
-        Addout <= InputAddress + 4;
-        
-end architecture; --behavioral
+architecture Behavior of Adder is
+begin
+	Add4 : process(Adder_input)
+	begin
+		Adder_output <= Adder_input + 4;
+	end process; -- Add4
+end architecture; -- Behavior

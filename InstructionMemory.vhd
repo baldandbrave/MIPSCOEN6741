@@ -10,11 +10,12 @@ USE IEEE.numeric_std.all;
 
 
 entity InstructionMemory is
-port (
- InstructionAddress: in std_logic_vector(31 downto 0);
- InstructionOut: out  std_logic_vector(31 downto 0)
-);
+    port (
+        InstructionAddress: in std_logic_vector(31 downto 0);
+        InstructionOut: out  std_logic_vector(31 downto 0)
+    );
 end InstructionMemory;
+
 architecture Behavioral of InstructionMemory is
 	type RAM_16_x_32 is array(0 to 15) of std_logic_vector(31 downto 0);
 	signal IM : RAM_16_x_32 := (
@@ -38,8 +39,9 @@ architecture Behavioral of InstructionMemory is
                                 x"00000000"
                                 );
 begin
-	
 	-- Reset Address: 003FFFFC 
-	InstructionOut <= x"00000000" when InstructionAddress = x"003FFFFC" else 
+        InstructionOut <= x"00000000" when InstructionAddress = x"003FFFFC" else 
 		IM(( to_integer(unsigned(InstructionAddress)) - 4194304) /4);
-end Behavioral;
+    
+	
+end architecture ;

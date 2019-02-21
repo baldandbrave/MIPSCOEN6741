@@ -11,8 +11,8 @@ library ieee ;
 entity PC is
   port (
     Clock : in std_logic;
-    InputAdrress : in std_logic_vector(31 downto 0);
-    OutputAddress: out std_logic_vector(31 downto 0)
+    PrevInstAddress : in std_logic_vector(31 downto 0);
+    NextInstAddress: out std_logic_vector(31 downto 0)
   ) ;
 end PC ; 
 
@@ -21,9 +21,9 @@ architecture Behavior of PC is
 begin
     PC : process( Clock )
     begin
-        OutputAddress <= PCAddressSignal;
+        NextInstAddress <= PCAddressSignal;
         if rising_edge(Clock) then -- TODO: if meet error in simulating use Clock'event
-            PCAddressSignal <= InputAddress;
+            PCAddressSignal <= PrevInstAddress;
         end if ;
     end process ; -- PC
 end architecture ;

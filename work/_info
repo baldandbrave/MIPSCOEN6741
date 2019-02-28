@@ -49,47 +49,74 @@ R11
 !i113 1
 R12
 R13
+Ccfg_tb_datamemory
+etb_DataMemory
+atb
+Z14 DEx4 work 10 datamemory 0 22 kn09>6IG][iUES7QFiYGm2
+DAx4 work 13 tb_datamemory 2 tb 22 o2oRjZV45SH`m`33g>hk[2
+R1
+R2
+R3
+Z15 DEx4 work 13 tb_datamemory 0 22 HBTN>LnU]VePmAjUQU^e?0
+Z16 w1551383673
+R4
+Z17 8C:/Users/onthe/Desktop/MIPSCOEN6741/tb_DataMemory.vhd
+Z18 FC:/Users/onthe/Desktop/MIPSCOEN6741/tb_DataMemory.vhd
+l0
+L54
+Vi4eQ:kEK0J_041n9cL`A11
+!s100 l]iG>0K=15I]^G_<KcL0L2
+R7
+31
+Z19 !s110 1551383675
+!i10b 0
+Z20 !s108 1551383675.000000
+Z21 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/tb_DataMemory.vhd|
+Z22 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/tb_DataMemory.vhd|
+!i113 1
+R12
+Z23 tExplicit 1 NoCoverage 1 CvgOpt 0
 Edatamemory
-Z14 w1551382218
+Z24 w1551382218
 R1
 R2
 R3
 R4
-Z15 8C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
-Z16 FC:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
+Z25 8C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
+Z26 FC:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
 l0
 L8
 Vkn09>6IG][iUES7QFiYGm2
 !s100 U5S:1h3h;zb^cN?9Pk3]k3
 R7
 31
-Z17 !s110 1551382220
+Z27 !s110 1551382220
 !i10b 1
-Z18 !s108 1551382219.000000
-Z19 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd|
-Z20 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd|
+Z28 !s108 1551382219.000000
+Z29 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd|
+Z30 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd|
 !i113 1
 R12
-Z21 tExplicit 1 NoCoverage 1 CvgOpt 0
+R23
 Abehavior
 R1
 R2
 R3
-DEx4 work 10 datamemory 0 22 kn09>6IG][iUES7QFiYGm2
+R14
 l21
 L18
 VYSI6L:I3hEnd8]YB5>`5A1
 !s100 ji^C1<DSXjz6h^>IhE4jW0
 R7
 31
-R17
+R27
 !i10b 1
-R18
-R19
-R20
+R28
+R29
+R30
 !i113 1
 R12
-R21
+R23
 Abehavioral
 R1
 R2
@@ -108,7 +135,7 @@ R7
 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/test.vhd|
 !i113 1
 R12
-R21
+R23
 FC:/Users/onthe/Desktop/MIPSCOEN6741/test.vhd
 w1551381984
 8C:/Users/onthe/Desktop/MIPSCOEN6741/test.vhd
@@ -134,27 +161,27 @@ R7
 o-work work -2002 -explicit
 R13
 Epc
-Z22 w1551382457
+Z31 w1551382457
 R1
 R2
 R3
 R4
-Z23 8C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
-Z24 FC:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
+Z32 8C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
+Z33 FC:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
 l0
 L11
 V@zY^MR]PG2`hl:eEM5fXg2
 !s100 JQ5zl5Bd=Yl1e]b]6=o9B1
 R7
 31
-Z25 !s110 1551382459
+Z34 !s110 1551382459
 !i10b 1
-Z26 !s108 1551382459.000000
-Z27 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd|
-Z28 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd|
+Z35 !s108 1551382459.000000
+Z36 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd|
+Z37 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd|
 !i113 1
 R12
-R21
+R23
 Abehavior
 R1
 R2
@@ -166,11 +193,52 @@ V7O5]PH>=4>7aVIcHHfYE91
 !s100 J1o9@TZFW5iVQ`8Q[h1YY3
 R7
 31
-R25
+R34
 !i10b 1
-R26
-R27
-R28
+R35
+R36
+R37
 !i113 1
 R12
+R23
+Etb_datamemory
+R16
+R1
+R2
+R3
+R4
+R17
+R18
+l0
+L9
+VHBTN>LnU]VePmAjUQU^e?0
+!s100 fIm5n7DBdgzzhh9[=EQOB3
+R7
+31
+R19
+!i10b 1
+R20
 R21
+R22
+!i113 1
+R12
+R23
+Atb
+R1
+R2
+R3
+R15
+l28
+L12
+Z38 Vo2oRjZV45SH`m`33g>hk[2
+Z39 !s100 NzNZV0o38gVdNG<Ek^8E:0
+R7
+31
+R19
+!i10b 1
+R20
+R21
+R22
+!i113 1
+R12
+R23

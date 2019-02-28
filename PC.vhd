@@ -17,7 +17,7 @@ entity PC is
 end PC ; 
 
 architecture Behavior of PC is
-    signal PCAddressSignal : std_logic_vector(31 downto 0) := (others =>0);
+    signal PCAddressSignal : std_logic_vector(31 downto 0) := (others => '0');
 begin
     PC : process( Clock )
     begin

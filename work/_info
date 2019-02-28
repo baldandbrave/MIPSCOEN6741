@@ -8,3 +8,169 @@ z2
 !i10f 100
 cModel Technology
 dC:/intelFPGA/18.1
+Ealu
+Z0 w1551378235
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dC:/Users/onthe/Desktop/MIPSCOEN6741
+Z5 8C:/Users/onthe/Desktop/MIPSCOEN6741/ALU.vhd
+Z6 FC:/Users/onthe/Desktop/MIPSCOEN6741/ALU.vhd
+l0
+L8
+VlV8>T6bKQlTXW3[;0@T[51
+!s100 n<mz_Fl>P@cKNPYGX0dec2
+Z7 OV;C;10.5b;63
+32
+Z8 !s110 1551378244
+!i10b 1
+Z9 !s108 1551378244.000000
+Z10 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/ALU.vhd|
+Z11 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/ALU.vhd|
+!i113 1
+Z12 o-work work
+Z13 tExplicit 1 CvgOpt 0
+Abehavior
+R1
+R2
+R3
+DEx4 work 3 alu 0 22 lV8>T6bKQlTXW3[;0@T[51
+l22
+L18
+ViG=k>`i@<zLADWTUTzJHN1
+!s100 `j1F047BlC?oa[nRCVYS>2
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Edatamemory
+Z14 w1551382218
+R1
+R2
+R3
+R4
+Z15 8C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
+Z16 FC:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
+l0
+L8
+Vkn09>6IG][iUES7QFiYGm2
+!s100 U5S:1h3h;zb^cN?9Pk3]k3
+R7
+31
+Z17 !s110 1551382220
+!i10b 1
+Z18 !s108 1551382219.000000
+Z19 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd|
+Z20 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd|
+!i113 1
+R12
+Z21 tExplicit 1 NoCoverage 1 CvgOpt 0
+Abehavior
+R1
+R2
+R3
+DEx4 work 10 datamemory 0 22 kn09>6IG][iUES7QFiYGm2
+l21
+L18
+VYSI6L:I3hEnd8]YB5>`5A1
+!s100 ji^C1<DSXjz6h^>IhE4jW0
+R7
+31
+R17
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R12
+R21
+Abehavioral
+R1
+R2
+R3
+DEx4 work 10 datamemory 0 22 H;mKSb9UAgY:aYWID?eN40
+l33
+L13
+V6NL214c7=aEjS4E9OXoiB3
+!s100 A8:4:mAOUiVXeBR[nWIfS3
+R7
+31
+!s110 1551381988
+!i10b 1
+!s108 1551381988.000000
+!s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/test.vhd|
+!s107 C:/Users/onthe/Desktop/MIPSCOEN6741/test.vhd|
+!i113 1
+R12
+R21
+FC:/Users/onthe/Desktop/MIPSCOEN6741/test.vhd
+w1551381984
+8C:/Users/onthe/Desktop/MIPSCOEN6741/test.vhd
+Emips
+w1547607624
+R2
+R3
+R4
+8C:/Users/onthe/Desktop/MIPSCOEN6741/MIPS.vhd
+FC:/Users/onthe/Desktop/MIPSCOEN6741/MIPS.vhd
+l0
+L4
+VAk5oDOoc[l2cOo:4F6V961
+!s100 0BM=zQ9VcNIL2m`D[@lEG0
+R7
+32
+!s110 1551377509
+!i10b 1
+!s108 1551377509.000000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/onthe/Desktop/MIPSCOEN6741/MIPS.vhd|
+!s107 C:/Users/onthe/Desktop/MIPSCOEN6741/MIPS.vhd|
+!i113 1
+o-work work -2002 -explicit
+R13
+Epc
+Z22 w1551382457
+R1
+R2
+R3
+R4
+Z23 8C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
+Z24 FC:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
+l0
+L11
+V@zY^MR]PG2`hl:eEM5fXg2
+!s100 JQ5zl5Bd=Yl1e]b]6=o9B1
+R7
+31
+Z25 !s110 1551382459
+!i10b 1
+Z26 !s108 1551382459.000000
+Z27 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd|
+Z28 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd|
+!i113 1
+R12
+R21
+Abehavior
+R1
+R2
+R3
+DEx4 work 2 pc 0 22 @zY^MR]PG2`hl:eEM5fXg2
+l21
+L19
+V7O5]PH>=4>7aVIcHHfYE91
+!s100 J1o9@TZFW5iVQ`8Q[h1YY3
+R7
+31
+R25
+!i10b 1
+R26
+R27
+R28
+!i113 1
+R12
+R21

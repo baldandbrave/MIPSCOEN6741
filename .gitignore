@@ -1,0 +1,5 @@
+*.bak
+*.mti
+*.opt
+work/_*
+*.ini

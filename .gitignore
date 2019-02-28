@@ -3,3 +3,5 @@
 *.opt
 work/_*
 *.ini
+*.wlf
+*.vstf

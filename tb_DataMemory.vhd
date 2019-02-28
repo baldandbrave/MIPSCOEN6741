@@ -37,13 +37,22 @@ begin
     stimuli : process
     begin
         -- EDIT Adapt initialization as needed
+        
+        -- EDIT Add stimuli here
         MemRead <= '0';
         MemWrite <= '1';
-        Address <= x"00000011" ;
-        WriteData <= x"00001984" ;
-
-        -- EDIT Add stimuli here
-
+        -- Address <= std_logic_vector(to_unsigned(16, 32)) OR std_logic_vector(to_unsigned(I * 4, 32));
+        Address <= std_logic_vector(to_unsigned(20, 32)) ;
+        WriteData <= x"00001984";
+        WAIT FOR 25 ns;
+        MemRead <= '1';
+        MemWrite <= '0';
+        -- Address <= std_logic_vector(to_unsigned(16, 32)) OR std_logic_vector(to_unsigned(I * 4, 32));
+        Address <= std_logic_vector(to_unsigned(20, 32)) ;
+        WAIT FOR 25 ns;
+        ASSERT false
+        REPORT "END"
+        SEVERITY failure;
         wait for 10 ns;
     end process;
 

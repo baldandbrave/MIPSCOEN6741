@@ -5,7 +5,7 @@ ENTITY tb_instructionMemory IS
 END tb_instructionMemory;
 ARCHITECTURE behavior OF tb_instructionMemory IS
 	--Inputs
-	SIGNAL tb_readAddress : std_logic_vector(31 DOWNTO 0) := x"003ffffc";
+	SIGNAL tb_readAddress : std_logic_vector(31 DOWNTO 0) := x"003FFFFC";
 	--Outputs
 	SIGNAL tb_instruction : std_logic_vector(31 DOWNTO 0);
 BEGIN

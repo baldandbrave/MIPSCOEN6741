@@ -6,14 +6,14 @@ entity tb_Mux32 is
 end tb_Mux32;
 
 architecture behavior of tb_Mux32 is
-	Constant N : integer := 5; -- Change N to 32 when testing for 32 bit mux input
-	signal tb_MuxInp_0 : std_logic_vector( N - 1 downto 0) := (others => '0');
-	signal tb_MuxInp_1 : std_logic_vector( N - 1 downto 0) := (others => '0');
+	Constant tb_LengthOfInp : integer := 5; -- Change N to 32 when testing for 32 bit mux input
+	signal tb_MuxInp_0 : std_logic_vector( tb_LengthOfInp - 1 downto 0) := (others => '0');
+	signal tb_MuxInp_1 : std_logic_vector( tb_LengthOfInp - 1 downto 0) := (others => '0');
 	signal tb_MuxCntrlInp : std_logic := '0';
-	signal tb_MuxOut : std_logic_vector( N - 1 downto 0) := (others => '0');
+	signal tb_MuxOut : std_logic_vector( tb_LengthOfInp - 1 downto 0) := (others => '0');
 begin
-	test_module : entity work.Mux32(Behavior)
-	 GENERIC MAP( N => 5 ) -- Change N to 32 when testing for 32 bit mux input
+	test_module : entity work.MuxNBit(Behavioral)
+	 GENERIC MAP( tb_LengthOfInp => 5 ) -- Change N to 32 when testing for 32 bit mux input
 	 port map (
 		MuxControlInput => tb_MuxCntrlInp,
         	MuxInput_1 => tb_MuxInp_1,

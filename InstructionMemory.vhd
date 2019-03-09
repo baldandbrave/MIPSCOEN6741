@@ -30,7 +30,7 @@ architecture Behavioral of InstructionMemory is
                                 x"ae4d0005", -- [sw $t5 5($s2) => I(op:43(sw) rs:18(s2) rt:13(t5) immed:0x00000005)]
 
                                 x"1211fffb", -- 0x0040 0014: branchequal 	$s0, 	$s1
-                                x"08100000", -- 0x0040 002C: j 0x00400000 => 0000 1000 0001 0000 0000 0000 0000 (jump to address 0x00400000 (begining))
+                                x"08100000", -- 0x0040 002C:    j 0x00400000 => 0000 1000 0001 0000 0000 0000 0000 (jump to address 0x00400000 (begining))
                                 x"00000000",
                                 x"00000000",
                                 x"00000000",
@@ -39,7 +39,7 @@ architecture Behavioral of InstructionMemory is
                                 x"00000000"
                                 );
 begin
-	-- Reset Address: 003FFFFC 
+	-- Reset Address: 003FFFFC :4194300
         InstructionOut <= x"00000000" when InstructionAddress = x"003FFFFC" else 
 		IM(( to_integer(unsigned(InstructionAddress)) - 4194304) /4);
     

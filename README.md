@@ -15,3 +15,48 @@ https://github.com/PiJoules/MIPS-processor
 https://github.com/cm4233/MIPS-Processor-VHDL/tree/master/VHDL%20Codes
 
 https://github.com/BYVoid/MIPS32
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Opcode References
+https://opencores.org/projects/plasma/opcodes
+## Reference for ALUOp
+http://fourier.eng.hmc.edu/e85_old/lectures/processor/node5.html
+
+## MIPS Conventional Registers Structure
+http://www.cs.uwm.edu/classes/cs315/Bacon/Lecture/HTML/ch05s03.html
+
+## Convert Instructions to Hex format
+http://www.kurtm.net/mipsasm/index.cgi
+=======
+https://github.com/dugagjin/MIPS

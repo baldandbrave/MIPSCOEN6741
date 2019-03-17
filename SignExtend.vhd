@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 entity SignExtend is
   port (
-    SignExtend_in: in std_logic_vector(15 downto 0);
+    SignExtend_in: in std_logic_vector(18 downto 0);
     SignExtend_out: out std_logic_vector(31 downto 0)
   ) ;
 end SignExtend ;

@@ -4,12 +4,28 @@ library ieee ;
 
 entity EX_MEM is
   port (
-    clock
+    Clock           : in std_logic;
+    Reset           : in std_logic;
+
+    ALUResultIn     : in std_logic_vector(31 downto 0) ;
+    MemWriteIn      : in std_logic;
+    
+    ALUResultOut    : out std_logic_vector(31 downto 0) ;
+    MemWriteOut     : out std_logic;
   ) ;
 end EX_MEM ; 
 
 architecture Behavior of EX_MEM is
 
 begin
-
+  EX_MEM : process( Clock, Reset )
+  begin
+    if Reset = '1' then
+      ALUResultOut <= (others => 0);
+      MemWriteOut <= '0';
+    elsif rising_edge(Clock) then
+      ALUResultOut <= ALUResultIn;
+      MemWriteOut <= MemWriteIn;
+    end if ;
+  end process ; -- EX_MEM
 end architecture ;

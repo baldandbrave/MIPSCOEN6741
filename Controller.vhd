@@ -1,4 +1,5 @@
 -- 31-29 opcode, 3bits
+-- Reference: https://www.d.umn.edu/~gshute/mips/control-signal-summary.xhtml
 -- TODO: explain `after x ns` in simmulation.
 library ieee;
 use ieee.std_logic_1164.all;

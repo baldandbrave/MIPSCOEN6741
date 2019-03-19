@@ -9,6 +9,8 @@
 -- subtract-not-equal: 0011 # For bne. Not sure if these are the right alu_control bits, but this one was available.
 -- subtract: 0110
 -- set-on-less-than: 0111
+-------------------------
+-- Instruction format: 8-0 funct, 9 bits,  add 0 ext, ALUOp=11 => and
 ------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
@@ -16,8 +18,8 @@ use ieee.numeric_std.all;
 
 entity ALUControl is
   port (
-    Funct: in std_logic_vector(5 down to 0);
-    ALU_op: in std_logic_vector(1 down to 0);
+    Funct: in std_logic_vector(8 downto 0);
+    ALU_op: in std_logic_vector(1 downto 0);
     ALUControlFunct: out std_logic_vector(2 downto 0)
   ) ;
 end ALUControl ;
@@ -33,13 +35,13 @@ architecture Behavior of ALUControl is
     begin
         ALUControl_Process : process(Funct, ALU_op)
         begin
-            ALUControlFunct <= Add when (ALU_op="00" or (ALU_op="10" and Funct="100000")) else
-                                Substract when(ALU_op="01" or (ALU_op="10" and Funct="100010")) else
+            ALUControlFunct <= Add when (ALU_op="00" or (ALU_op="10" and Funct="000100000")) else
+                                Substract when(ALU_op="01" or (ALU_op="10" and Funct="000100010")) else
                                 -- SubstractNotEqual when(ALU_op="11") else
-                                And_op when(ALU_op="10" and Funct="100100") else
-                                Or_op when(ALU_op="10" and Funct="100101") else
-                                SetOnLessThan when(ALU_op="10" and Funct="101010") else
-                                "0000";
+                                And_op when(ALU_op="11" or (ALU_op="10" and Funct="000100100")) else
+                                Or_op when(ALU_op="10" and Funct="000100101") else
+                                SetOnLessThan when(ALU_op="10" and Funct="000101010") else
+                                "000";
         end process;
 
 

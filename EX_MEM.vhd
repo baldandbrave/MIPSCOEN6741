@@ -23,7 +23,7 @@ begin
     if Reset = '1' then
       ALUResultOut <= (others => 0);
       MemWriteOut <= '0';
-    elsif rising_edge(Clock) then
+    elsif falling_edge(Clock) then
       ALUResultOut <= ALUResultIn;
       MemWriteOut <= MemWriteIn;
     end if ;

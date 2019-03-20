@@ -24,7 +24,7 @@ begin
         if Reset = '1' then
             NewPCOut <= (others => '0');
             InstructionOut <= (others => '0');
-        elsif rising_edge(Clock) then
+        elsif falling_edge(Clock) then
             NewPCOut <= NewPCIn;
             InstructionOut <= InstructionIn;
         end if ;

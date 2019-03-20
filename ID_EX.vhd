@@ -31,7 +31,7 @@ begin
             ReadData2Out <= (others => '0');
             SignExtendOut <= (others => '0');
             FuctioinCodeOut <= (others => '0');
-        elsif rising_edge(Clock) then
+        elsif falling_edge(Clock) then
             ReadData1Out <= ReadData1In;
             ReadData2Out <= ReadData2In;
             SignExtendOut <= SignExtendIn;

@@ -13,6 +13,8 @@ entity DataHarzardUnit is
     IDEXInst    : in std_logic_vector(31 downto 0) ;
     EXMEMInst   : in std_logic_vector(31 downto 0) ;
 
+    -- this logic is right! stall PC and IF/ID reg, flush ID/EX reg
+    -- motherfucker MIPS!
     PCStall     : out std_logic;
     IFIDStall   : out std_logic;
     IDEXFlush   : out std_logic -- set operand & control signal to 0, insert bubble.
@@ -20,33 +22,46 @@ entity DataHarzardUnit is
 end DataHarzardUnit ; 
 
 architecture Behavior of DataHarzardUnit is
+    -- init counter as 0
     signal StallCounter : integer := 0;
 
-    alias IDEXInstRd    is IDEXInst(18 downto 14);
-    alias EXMEMInstRd   is EXMEMInst(18 downto 14);
+    alias IDEXRd    is IDEXInst(18 downto 14);
+    alias EXMEMRd   is EXMEMInst(18 downto 14);
 
-    alias IFIDInstRs    is IDEXInst(28 downto 24);
-    alias IFIDInstRt    is IDEXInst(23 downto 19);
+    alias IFIDRs    is IDEXInst(28 downto 24);
+    alias IFIDRt    is IDEXInst(23 downto 19);
 
     signal XorResult1   : std_logic_vector(4 downto 0) ;
     signal XorResult2   : std_logic_vector(4 downto 0) ;
 begin
     DataHarzard : process( IFIDInst, IDEXInst, EXMEMInst)
     begin
-        
-        XorResult1 <= IDEXInstRd xor IFIDInstRs;
-        XorResult2 <= IDEXInstRd xor IFIDInstRt;
+        -- Dependency in ID/EX and IF/ID
+        XorResult1 <= IDEXRd xor IFIDRs;
+        XorResult2 <= IDEXRd xor IFIDRt;
         if XorResult1="00000" or XorResult2="00000" then
             -- stall 2
             StallCounter <= 2;
         end if;
-
-        XorResult1 <= EXMEMInstRd xor IFIDInstRs;
-        XorResult2 <= EXMEMInstRd xor IFIDInstRt;
+        -- Dependency in EX/MEM and IF/ID
+        XorResult1 <= EXMEMRd xor IFIDRs;
+        XorResult2 <= EXMEMRd xor IFIDRt;
         if XorResult1="00000" or XorResult2="00000" then
             -- stall 1
             StallCounter <= 1;
         end if ;
         
+        -- auto-decrement counter
+        if StallCounter > 0 then
+            StallCounter <= StallCounter - 1;
+            PCStall = '1';
+            IFIDStall = '1';
+            IDEXFlush = '1';
+        else
+            PCStall = '0';
+            IFIDStall = '0';
+            IDEXFlush = '0';
+        end if ;
+
     end process ; -- DataHarzard
 end architecture ;

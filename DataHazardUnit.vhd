@@ -9,6 +9,8 @@ library ieee ;
 
 entity DataHarzardUnit is
   port (
+    
+    Clock       : in std_logic;
     IFIDInst    : in std_logic_vector(31 downto 0) ;
     IDEXInst    : in std_logic_vector(31 downto 0) ;
     EXMEMInst   : in std_logic_vector(31 downto 0) ;
@@ -34,7 +36,7 @@ architecture Behavior of DataHarzardUnit is
     signal XorResult1   : std_logic_vector(4 downto 0) ;
     signal XorResult2   : std_logic_vector(4 downto 0) ;
 begin
-    DataHarzard : process( IFIDInst, IDEXInst, EXMEMInst)
+    DataHarzard : process( Clock, IFIDInst, IDEXInst, EXMEMInst)
     begin
         -- Dependency in ID/EX and IF/ID
         XorResult1 <= IDEXRd xor IFIDRs;
@@ -51,16 +53,18 @@ begin
             StallCounter <= 1;
         end if ;
         
-        -- auto-decrement counter
-        if StallCounter > 0 then
-            StallCounter <= StallCounter - 1;
-            PCStall = '1';
-            IFIDStall = '1';
-            IDEXFlush = '1';
-        else
-            PCStall = '0';
-            IFIDStall = '0';
-            IDEXFlush = '0';
+        -- auto-decrement counter, count on falling edge.
+        if falling_edge(Clock) then
+            if StallCounter > 0 then
+                StallCounter <= StallCounter - 1;
+                PCStall = '1';
+                IFIDStall = '1';
+                IDEXFlush = '1';
+            else
+                PCStall = '0';
+                IFIDStall = '0';
+                IDEXFlush = '0';
+            end if ;
         end if ;
 
     end process ; -- DataHarzard

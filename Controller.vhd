@@ -12,7 +12,7 @@ entity Controller is
     Branch  : out std_logic;
     MemRead : out std_logic;
     MemToReg: out std_logic;
-    ALUOp   : out std_logic;
+    ALUOp   : out std_logic_vector(1 downto 0) ;;
     MemWrite: out std_logic;
     ALUSrc  : out std_logic;
     RegWrite: out std_logic

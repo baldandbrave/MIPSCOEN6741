@@ -9,9 +9,21 @@ entity EX_MEM is
 
     ALUResultIn     : in std_logic_vector(31 downto 0) ;
     MemWriteIn      : in std_logic;
-    
+
+    -- MEM signals
+    MemRead         : in std_logic;
+    MemWrite        : in std_logic;
+    -- WB signals
+    MemToReg        : in std_logic;
+    RegDst          : in std_logic;
+
     ALUResultOut    : out std_logic_vector(31 downto 0) ;
+    MemWriteOut     : out std_logic ;
+
+    MemReadOut      : out std_logic;
     MemWriteOut     : out std_logic;
+    MemToRegOut     : out std_logic;
+    RegDstOut       : out std_logic
   ) ;
 end EX_MEM ; 
 

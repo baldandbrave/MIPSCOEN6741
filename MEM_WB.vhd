@@ -11,8 +11,14 @@ entity MEM_WB is
     ReadDataIn      : in std_logic_vector(31 downto 0) ;
     ALUResultIn     : in std_logic_vector(31 downto 0) ;
 
+    -- WB signals
+    MemToReg        : in std_logic;
+    RegDst          : in std_logic;
+
     ReadDataOut     : out std_logic_vector(31 downto 0) ;
-    ALUResultOut    : out std_logic_vector(31 downto 0)
+    ALUResultOut    : out std_logic_vector(31 downto 0) ;
+    MemToRegOut     : out std_logic;
+    RegDstOut       : out std_logic
   ) ;
 end MEM_WB ; 
 

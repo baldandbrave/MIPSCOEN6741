@@ -8,6 +8,7 @@ library ieee ;
 
 entity ControlHarzardUnit is
   port (
+    Clock     : in std_logic;
     ReadData1 : in std_logic_vector(31 downto 0) ; -- output of register
     ReadData2 : in std_logic_vector(31 downto 0) ; -- output of register
     PCPlus4   : in std_logic_vector(31 downto 0) ;
@@ -23,21 +24,30 @@ entity ControlHarzardUnit is
 end ControlHarzardUnit ; 
 
 architecture Behavior of ControlHarzardUnit is
-
+  signal FlushCounter : integer := 0;
 begin
     
-  ControlHarzardUnit : process(OpCode, Funct, ReadData1, ReadData2)
+  ControlHarzardUnit : process(OpCode, Funct, ReadData1, ReadData2, Clock)
     begin
       if (ReadData1 xor ReadData2 = x"00000000") and (Opcode = "011") then -- beq
         NewPC <= PCPlus4 + Immediate;
-        IFIDFlush <= '1';
+        FlushCounter = 1;
       elsif OpCode = "000" and Funct = "000001000" then -- jr
         NewPC <= ReadData1/2; -- TODO: which one?
-        IFIDFlush <= '1';
+        FlushCounter = 1;
       else
         NewPC <= PCPlus4; -- no branch
-        IFIDFlush <= '0';
       end if ;
+
+      -- same logic as DataHazardUnit, control on rising edge, before update.
+      if rising_edge(Clock) then
+        if FlushCounter > 0 then
+          FlushCounter <= FlushCounter - 1;
+          IFIDFlush <= '1';
+        else
+          IFIDFlush <= '0';
+        end if ;
+    end if ;
     end process ; -- ControlHarzardUnit
 
 end architecture ;

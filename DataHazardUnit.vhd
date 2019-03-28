@@ -14,8 +14,7 @@ entity DataHarzardUnit is
     IDEXInst    : in std_logic_vector(31 downto 0) ;
     EXMEMInst   : in std_logic_vector(31 downto 0) ;
 
-    -- this logic is right! stall PC and IF/ID reg, flush ID/EX reg
-    -- motherfucker MIPS!
+    -- stall PC and IF/ID reg, flush ID/EX reg
     PCStall     : out std_logic;
     IFIDStall   : out std_logic;
     IDEXFlush   : out std_logic -- set operand & control signal to 0, insert bubble.
@@ -52,8 +51,8 @@ begin
             StallCounter <= 1;
         end if ;
         
-        -- auto-decrement counter, count on falling edge.
-        if falling_edge(Clock) then
+        -- auto-decrement counter, count on rising edge: before pipe reg update
+        if rising_edge(Clock) then
             if StallCounter > 0 then
                 StallCounter <= StallCounter - 1;
                 PCStall = '1';

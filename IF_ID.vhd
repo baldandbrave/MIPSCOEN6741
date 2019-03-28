@@ -6,8 +6,10 @@ entity IF_ID is
   port (
     Clock           : in std_logic;
     Reset           : in std_logic;
-    -- stall control signal
+    -- stall in data hazard
     IFIDStall       : in std_logic;
+    -- flush in control hazard
+    IFIDFlush       : in std_logic;
     -- PCIn: PC+4
     PCIn         : in std_logic_vector(31 downto 0) ;
     InstructionIn   : in std_logic_vector(31 downto 0) ;
@@ -20,14 +22,18 @@ end IF_ID ;
 architecture Behavior of IF_ID is
 
 begin
-    IF_ID : process( Clock, Reset, IFIDStall )
+    IF_ID : process( Clock, Reset, IFIDStall, IFIDFlush )
     begin
         if Reset = '1' then
             PCOut <= (others => '0');
             InstructionOut <= (others => '0');
         elsif falling_edge(Clock) then
-            -- judge if stall on falling edge
-            if IFIDStall != '0' then
+            if IFIDStall = '1' then -- hold output
+                NULL;
+            elsif IFIDFlush = '1' then -- set output to 0.
+                PCOut <= (others => '0');
+                InstructionOut <= (others => '0');
+            else
                 PCOut <= PCIn;
                 InstructionOut <= InstructionIn;
             end if ;

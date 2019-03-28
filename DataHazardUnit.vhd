@@ -28,27 +28,32 @@ architecture Behavior of DataHarzardUnit is
     alias IDEXRd    is IDEXInst(18 downto 14);
     alias EXMEMRd   is EXMEMInst(18 downto 14);
 
-    alias IFIDRs    is IDEXInst(28 downto 24);
-    alias IFIDRt    is IDEXInst(23 downto 19);
+    alias IFIDRs    is IFIDInst(28 downto 24);
+    alias IFIDRt    is IFIDInst(23 downto 19);
 
     signal XorResult1   : std_logic_vector(4 downto 0) ;
     signal XorResult2   : std_logic_vector(4 downto 0) ;
+    signal XorResult3   : std_logic_vector(4 downto 0) ;
+    signal XorResult4   : std_logic_vector(4 downto 0) ;   
 begin
+    
+    -- Dependency in ID/EX and IF/ID
+    XorResult1 <= IDEXRd xor IFIDRs;
+    XorResult2 <= IDEXRd xor IFIDRt;
+    -- Dependency in EX/MEM and IF/ID
+    XorResult3 <= EXMEMRd xor IFIDRs;
+    XorResult4 <= EXMEMRd xor IFIDRt;
+
     DataHarzard : process( Clock, IFIDInst, IDEXInst, EXMEMInst)
     begin
-        -- Dependency in ID/EX and IF/ID
-        XorResult1 <= IDEXRd xor IFIDRs;
-        XorResult2 <= IDEXRd xor IFIDRt;
         if XorResult1="00000" or XorResult2="00000" then
             -- stall 2
             StallCounter <= 2;
-        end if;
-        -- Dependency in EX/MEM and IF/ID
-        XorResult1 <= EXMEMRd xor IFIDRs;
-        XorResult2 <= EXMEMRd xor IFIDRt;
-        if XorResult1="00000" or XorResult2="00000" then
+        elsif XorResult3="00000" or XorResult4="00000" then
             -- stall 1
             StallCounter <= 1;
+        else
+            NULL;
         end if ;
         
         -- auto-decrement counter, count on rising edge: before pipe reg update

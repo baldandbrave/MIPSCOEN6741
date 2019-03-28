@@ -24,7 +24,7 @@ begin
     PC : process( Clock )
     begin
         NextInstAddress <= PCAddressSignal;
-        if falling_edge(Clock) then -- TODO: if meet error in simulating use Clock'event
+        if falling_edge(Clock) then
             if PCStall = '1' then
                 NULL;
             else

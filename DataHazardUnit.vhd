@@ -2,7 +2,6 @@
 -- Dependency between 1,2 stage: 2cc
 -- Dependency between 1,3 stage: 1cc
 
--- How to insert bubble into EX ? 
 library ieee ;
     use ieee.std_logic_1164.all ;
     use ieee.numeric_std.all ;

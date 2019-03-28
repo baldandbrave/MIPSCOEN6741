@@ -26,9 +26,9 @@ begin
         NextInstAddress <= PCAddressSignal;
         if falling_edge(Clock) then
             if PCStall = '1' then
-                NULL;
+                NULL; -- hold PC
             else
-                NextInstAddress <= PrevInstAddress;
+                NextInstAddress <= PrevInstAddress; -- deliver address
             end if ;
         end if ;
     end process ; -- PC

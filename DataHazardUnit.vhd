@@ -55,13 +55,13 @@ begin
         if rising_edge(Clock) then
             if StallCounter > 0 then
                 StallCounter <= StallCounter - 1;
-                PCStall = '1';
-                IFIDStall = '1';
-                IDEXFlush = '1';
+                PCStall <= '1';
+                IFIDStall <= '1';
+                IDEXFlush <= '1';
             else
-                PCStall = '0';
-                IFIDStall = '0';
-                IDEXFlush = '0';
+                PCStall <= '0';
+                IFIDStall <= '0';
+                IDEXFlush <= '0';
             end if ;
         end if ;
 

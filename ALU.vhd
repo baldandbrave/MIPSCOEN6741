@@ -27,8 +27,8 @@ begin
         
             when "000" => -- and
                 ALUResultSignal <= LeftOperand and RightOperand;
-            when "001" => -- or
-                ALUResultSignal <= LeftOperand or RightOperand;
+            when "001" => -- xor
+                ALUResultSignal <= LeftOperand xor RightOperand;
             when "010" => -- add
                 ALUResultSignal <= std_logic_vector(unsigned(LeftOperand) + unsigned(RightOperand));
             when "110" => -- sub

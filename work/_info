@@ -130,25 +130,66 @@ Z41 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/tb_PC.vhd|
 !i113 1
 R12
 R23
-Edatamemory
-Z42 w1551384104
+Edataharzardunit
+Z42 w1553470194
 R1
 R2
 R3
 R4
-Z43 8C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
-Z44 FC:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
+Z43 8C:/Users/onthe/Desktop/MIPSCOEN6741/DataHazardUnit.vhd
+Z44 FC:/Users/onthe/Desktop/MIPSCOEN6741/DataHazardUnit.vhd
+l0
+L10
+V^HziC>PBI0jeIbW]h5ZDG3
+!s100 R<L[<lE@>b_KVzCkScfP21
+R7
+33
+Z45 !s110 1553470198
+!i10b 1
+Z46 !s108 1553470198.000000
+Z47 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/DataHazardUnit.vhd|
+Z48 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/DataHazardUnit.vhd|
+!i113 1
+R12
+R23
+Abehavior
+R1
+R2
+R3
+Z49 DEx4 work 15 dataharzardunit 0 22 ^HziC>PBI0jeIbW]h5ZDG3
+l33
+L22
+V?Og>P>>RZkP<WAceNAjaG2
+!s100 Q]cNOKSc:23G:cD_E`Y4[0
+R7
+33
+R45
+!i10b 1
+R46
+R47
+R48
+!i113 1
+R12
+R23
+Edatamemory
+Z50 w1551384104
+R1
+R2
+R3
+R4
+Z51 8C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
+Z52 FC:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
 l0
 L7
 Vo]bmXlj[S2BGO[nK2]mOj2
 !s100 ]Ld?@XMoUX@k:SZ_b9UPZ0
 R7
 31
-Z45 !s110 1551384538
+Z53 !s110 1551384538
 !i10b 1
-Z46 !s108 1551384537.000000
-Z47 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd|
-Z48 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd|
+Z54 !s108 1551384537.000000
+Z55 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd|
+Z56 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd|
 !i113 1
 R12
 R23
@@ -163,11 +204,11 @@ V_Ci<@aHlR9TD;oMQh8JGI1
 !s100 VTWYng?FXRD5<4H^GWe5:1
 R7
 31
-R45
+R53
 !i10b 1
-R46
-R47
-R48
+R54
+R55
+R56
 !i113 1
 R12
 R23
@@ -215,24 +256,24 @@ R7
 o-work work -2002 -explicit
 R13
 Epc
-R42
+R50
 R1
 R2
 R3
 R4
-Z49 8C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
-Z50 FC:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
+Z57 8C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
+Z58 FC:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
 l0
 L11
 V@zY^MR]PG2`hl:eEM5fXg2
 !s100 JQ5zl5Bd=Yl1e]b]6=o9B1
 R7
 31
-Z51 !s110 1551388445
+Z59 !s110 1551388445
 !i10b 1
-Z52 !s108 1551388444.000000
-Z53 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd|
-Z54 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd|
+Z60 !s108 1551388444.000000
+Z61 !s90 -reportprogress|300|-work|work|C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd|
+Z62 !s107 C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd|
 !i113 1
 R12
 R23
@@ -247,11 +288,11 @@ V7O5]PH>=4>7aVIcHHfYE91
 !s100 J1o9@TZFW5iVQ`8Q[h1YY3
 R7
 31
-R51
+R59
 !i10b 1
-R52
-R53
-R54
+R60
+R61
+R62
 !i113 1
 R12
 R23

@@ -7,11 +7,26 @@ entity EX_MEM is
     Clock           : in std_logic;
     Reset           : in std_logic;
 
-    ALUResultIn     : in std_logic_vector(31 downto 0) ;
-    MemWriteIn      : in std_logic;
+    -- ALU signals
+    ALUResultIn     : in std_logic_vector(31 downto 0);
+    ALUResultOut    : out std_logic_vector(31 downto 0);
+
+    -- Register Data
+    ReadData2_In   : in std_logic_vector(31 downto 0);
+    ReadData2_Out  : out std_logic_vector(31 downto 0);
     
-    ALUResultOut    : out std_logic_vector(31 downto 0) ;
+
+    -- MEM signals
+    MemReadIn       : in std_logic;
+    MemWriteIn      : in std_logic;
     MemWriteOut     : out std_logic;
+    MemReadOut      : out std_logic;
+
+    -- WB signals
+    MemToReg        : in std_logic;
+    RegDst          : in std_logic;   
+    MemToRegOut     : out std_logic;
+    RegDstOut       : out std_logic
   ) ;
 end EX_MEM ; 
 

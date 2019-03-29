@@ -12,12 +12,12 @@ end MIPS ;
 architecture Behavior of MIPS is
 
   Constant N : natural := 5;
-  signal sigOpCode : std_logic_vector( 5 downto 0 ) := (others => '0') ;
-  signal sigFunctn : std_logic_vector( 5 downto 0 ) := (others => '0') ;
+  signal sigOpCode : std_logic_vector( 2 downto 0 ) := (others => '0') ;
+  signal sigFunctn : std_logic_vector( 8 downto 0 ) := (others => '0') ;
   signal sigRs : std_logic_vector( 4 downto 0 ) := (others => '0') ;
   signal sigRt : std_logic_vector( 4 downto 0 ) := (others => '0') ;
   signal sigRd : std_logic_vector( 4 downto 0 ) := (others => '0') ;
-  signal sigImmediate : std_logic_vector( 15 downto 0 ) := (others => '0') ;
+  signal sigImmediate : std_logic_vector( 18 downto 0 ) := (others => '0') ;
   signal sigExtendedImmediate : std_logic_vector( 31 downto 0 ) := (others => '0') ;
   signal sigShamt : std_logic_vector( 4 downto 0 ) := (others => '0') ;
 
@@ -50,52 +50,53 @@ architecture Behavior of MIPS is
   signal sigMuxOut : std_logic_vector( N - 1 downto 0 ):= (others => '0');
 
 begin
-  process( clock, reset )
-begin
- end process;
-
+  -- process( clock, reset )
+	-- begin
+  -- end process;
 -- Wire some stuff
-      sigOpCode <= sigInstruction(31 downto 26);
-      sigRs <= sigInstruction(25 downto 21);
-      sigRt <= sigInstruction(20 downto 16);
-      sigRd <= sigInstruction(15 downto 11);
-      sigImmediate <= sigInstruction(15 downto 0);
-      sigFunctn <= sigInstruction(5 downto 0);
-      sigShamt <= sigInstruction(10 downto 6);
-      
+      sigOpCode <= sigInstruction(31 downto 29); -- 3 bits
+      sigRs <= sigInstruction(28 downto 24); -- 5 bits
+      sigRt <= sigInstruction(23 downto 19); -- 5 bits
+      sigRd <= sigInstruction(18 downto 14); -- 5 bits
+      sigImmediate <= sigInstruction(18 downto 0); -- 19 bits
+      sigFunctn <= sigInstruction(8 downto 0); -- 9 bits
+      sigShamt <= sigInstruction(13 downto 9); -- 5 bits
+
 	-- Mapping for IM Component -------------------------------------
-      IM : entity work.InstructionMemory(Behavioral)
-      port map( InstructionAddress => sigCurrentInstructionAddress,
+      IM : entity work.InstructionMemory(Behavioral)   port map(
+	 InstructionAddress => sigCurrentInstructionAddress,
         InstructionOut => sigInstruction
 );
   --------------------  MUX mapping ---------------------------------
   -- For R and I type operation: destination register is of 5 bit
-  MUX_RegFile : ENTITY work.MuxNBit(Behavioral)
-      Generic map (5)
-      PORT MAP(
-          MuxControlInput => sigRegDstCntrl,
-          MuxInput_0 => sigRt,
-          MuxInput_1 => sigRd,
-          MuxOutput => sigRegWriteData
-  );
-  MUX_ALU : ENTITY work.MuxNBit(Behavioral)
-      Generic map (32)
-      PORT MAP(
-          MuxControlInput => sigALUSrcCntrl,
-          MuxInput_0 => sigRegData2,
-          MuxInput_1 => sigExtendedImmediate,
-          MuxOutput => sigRegData2
-	  );
+  -- MUX_RegFile : ENTITY work.MuxNBit(Behavioral)
+  --     Generic map (5)
+  --     PORT MAP(
+  --         MuxControlInput => sigRegDstCntrl,
+  --         MuxInput_0 => sigRt,
+  --         MuxInput_1 => sigRd,
+  --         MuxOutput => sigRegWriteData
+  -- );
+  -- MUX_ALU : ENTITY work.MuxNBit(Behavioral)
+  --     Generic map (32)
+  --     PORT MAP(
+  --         MuxControlInput => sigALUSrcCntrl,
+  --         MuxInput_0 => sigRegData2,
+  --         MuxInput_1 => sigExtendedImmediate,
+  --         MuxOutput => sigRegData2
+	--   );
 
-  MUX_Mem2Reg : ENTITY work.MuxNBit(Behavioral)
-      Generic map ( 32)
-      PORT MAP(
-          MuxControlInput => sigMem2RegCntrl,
-          MuxInput_0 => sigALUResult,
-          MuxInput_1 => sigDMReadData,
-          MuxOutput => sigRegWriteAddress
-  );
-
+  -- MUX_Mem2Reg : ENTITY work.MuxNBit(Behavioral)
+  --     Generic map ( 32)
+  --     PORT MAP(
+  --         MuxControlInput => sigMem2RegCntrl,
+  --         MuxInput_0 => sigALUResult,
+  --         MuxInput_1 => sigDMReadData,
+  --         MuxOutput => sigRegWriteAddress
+  -- );
+  
+  
+ 
 --- Not clear about the control signals for MUX connected with AND gate. 
 --  MUX_AND : ENTITY work.MuxNBit(Behavioral)
 --  Generic map ( N => 32)

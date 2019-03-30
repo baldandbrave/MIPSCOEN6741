@@ -32,7 +32,7 @@ begin
   EX_MEM : process( Clock, Reset )
   begin
     if Reset = '1' then
-      ALUResultOut <= (others => 0);
+      ALUResultOut <= (others => '0');
       MemWriteOut <= '0';
     elsif falling_edge(Clock) then
       ALUResultOut <= ALUResultIn;

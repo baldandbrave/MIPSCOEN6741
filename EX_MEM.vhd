@@ -18,7 +18,6 @@ entity EX_MEM is
     RegDst          : in std_logic;
 
     ALUResultOut    : out std_logic_vector(31 downto 0) ;
-    MemWriteOut     : out std_logic ;
 
     MemReadOut      : out std_logic;
     MemWriteOut     : out std_logic;

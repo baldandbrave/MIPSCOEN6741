@@ -5,7 +5,7 @@ library ieee ;
 entity ID_EX is
   port (
     Clock           : in std_logic;
-    IDEXFlush           : in std_logic;
+    IDEXFlush       : in std_logic;
 
     ReadData1In     : in std_logic_vector(31 downto 0) ;
     ReadData2In     : in std_logic_vector(31 downto 0) ;
@@ -13,14 +13,14 @@ entity ID_EX is
     FunctionCodeIn  : in std_logic_vector(8 downto 0) ;
     
     -- EX signals
-    ALUSrc          : out std_logic;
-    ALUOp           : out std_logic_vector(1 downto 0) ;
+    ALUSrc          : in std_logic;
+    ALUOp           : in std_logic_vector(1 downto 0) ;
     -- MEM signals
-    MemRead         : out std_logic;
-    MemWrite        : out std_logic;
+    MemRead         : in std_logic;
+    MemWrite        : in std_logic;
     -- WB signals
-    MemToReg        : out std_logic;
-    RegDst          : out std_logic;
+    MemToReg        : in std_logic;
+    RegDst          : in std_logic;
 
     ReadData1Out    : out std_logic_vector(31 downto 0) ;
     ReadData2Out    : out std_logic_vector(31 downto 0) ;

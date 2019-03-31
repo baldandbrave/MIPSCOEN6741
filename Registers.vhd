@@ -7,10 +7,10 @@ use IEEE.std_logic_1164.all;
         Read_reg_1: in std_logic_vector(4 downto 0); -- output instruction[25-21] from instruction memory
         Read_reg_2: in std_logic_vector(4 downto 0); -- output instruction[20-16] from instruction memory
 
-         Write_register: in std_logic_vector(4 downto 0); 
+        Write_register: in std_logic_vector(4 downto 0); 
         Write_data: in std_logic_vector(31 downto 0);
 
-         Read_data_1: out std_logic_vector(31 downto 0)
+        Read_data_1: out std_logic_vector(31 downto 0);
         Read_data_2: out std_logic_vector(31 downto 0)
         );
 end Registers;

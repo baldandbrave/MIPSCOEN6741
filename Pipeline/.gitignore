@@ -1,0 +1,9 @@
+*.bak
+*.mti
+*.opt
+*.vhd
+work/
+*.ini
+*.wlf
+*.vstf
+*.mpf

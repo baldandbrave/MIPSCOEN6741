@@ -12,7 +12,7 @@ entity Controller is
     Branch  : out std_logic;
     MemRead : out std_logic;
     MemToReg: out std_logic;
-    ALUOp   : out std_logic_vector(1 downto 0) ;;
+    ALUOp   : out std_logic_vector(1 downto 0) ;
     MemWrite: out std_logic;
     ALUSrc  : out std_logic;
     RegWrite: out std_logic
@@ -31,7 +31,7 @@ begin
 				Jump          <= '0';
 				Branch        <= '0';
 				MemRead       <= '0';
-				memToRegister <= '0';
+				MemToReg <= '0';
 				ALUOp         <= "10";
 				MemWrite      <= '0';
 				ALUsrc        <= '0';
@@ -41,7 +41,7 @@ begin
 				Jump          <= '0';
 				Branch        <= '0';
 				MemRead       <= '0';
-				memToRegister <= '0';
+				MemToReg <= '0';
 				-- ALUOp         <= "11"; -- its 1X = 10/11 ["00" previous]
 				ALUOp					<= "11"; -- no refence from internet, set to 11(not used in other impl)
 				MemWrite      <= '0';
@@ -52,7 +52,7 @@ begin
 				Jump          <= '0';
 				Branch        <= '0';
 				MemRead       <= '0';
-				memToRegister <= '0';
+				MemToReg <= '0';
 				ALUOp         <= "01";
 				MemWrite      <= '0';
 				ALUsrc        <= '1';
@@ -62,7 +62,7 @@ begin
 				Jump          <= '0';
 				Branch        <= '1' after 2 ns;
 				MemRead       <= '0';
-				memToRegister <= 'X'; -- don't care
+				MemToReg <= 'X'; -- don't care
 				ALUOp         <= "01";
 				MemWrite      <= '0';
 				ALUsrc        <= '0';
@@ -72,7 +72,7 @@ begin
 				Jump          <= '0';
 				Branch        <= '0';
 				MemRead       <= '1';
-				memToRegister <= '1';
+				MemToReg <= '1';
 				ALUOp         <= "00";
 				MemWrite      <= '0';
 				ALUsrc        <= '1';
@@ -82,7 +82,7 @@ begin
 				Jump          <= '0';
 				Branch        <= '0' after 2 ns;
 				MemRead       <= '0';
-				memToRegister <= 'X'; -- don't care
+				MemToReg <= 'X'; -- don't care
 				ALUOp         <= "00";
 				MemWrite      <= '1';
 				ALUsrc        <= '1';

@@ -25,22 +25,22 @@ entity ALUControl is
 end ALUControl ;
 
 architecture Behavior of ALUControl is
-    signal And_op: std_logic_vector(2 downto 0) := "000";
-    signal Xor_op: std_logic_vector(2 downto 0) := "001";
-    signal Add: std_logic_vector(2 downto 0) := "010";
-    -- signal SubstractNotEqual: std_logic_vector(2 downto 0) := "0011";
-    signal Substract: std_logic_vector(2 downto 0) := "110";
-    signal SetOnLessThan: std_logic_vector(2 downto 0) := "111";
+    -- signal "000": std_logic_vector(2 downto 0) := "000";
+    -- signal "001": std_logic_vector(2 downto 0) := "001";
+    -- signal "010": std_logic_vector(2 downto 0) := "010";
+    -- -- signal "110"NotEqual: std_logic_vector(2 downto 0) := "0011";
+    -- signal "110": std_logic_vector(2 downto 0) := "110";
+    -- signal "111": std_logic_vector(2 downto 0) := "111";
 
     begin
         ALUControl_Process : process(Funct, ALU_op)
         begin
-            ALUControlFunct <= Add when (ALU_op="00" or (ALU_op="10" and Funct="000100000")) else
-                                Substract when(ALU_op="01" or (ALU_op="10" and Funct="000100010")) else
-                                -- SubstractNotEqual when(ALU_op="11") else
-                                And_op when(ALU_op="11" or (ALU_op="10" and Funct="000100100")) else
-                                Xor_op when(ALU_op="10" and Funct="000100110") else
-                                SetOnLessThan when(ALU_op="10" and Funct="000101010") else
+            ALUControlFunct <= "010" when (ALU_op="00" or (ALU_op="10" and Funct="000100000")) else
+                                "110" when(ALU_op="01" or (ALU_op="10" and Funct="000100010")) else
+                                -- "110"NotEqual when(ALU_op="11") else
+                                "000" when(ALU_op="11" or (ALU_op="10" and Funct="000100100")) else
+                                "001" when(ALU_op="10" and Funct="000100110") else
+                                "111" when(ALU_op="10" and Funct="000101010") else
                                 "000";
         end process;
 

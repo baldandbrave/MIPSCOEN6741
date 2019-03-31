@@ -11,7 +11,9 @@ entity ID_EX is
     ReadData2In     : in std_logic_vector(31 downto 0) ;
     SignExtendIn    : in std_logic_vector(31 downto 0) ;
     FunctionCodeIn  : in std_logic_vector(8 downto 0) ;
-    
+    -- for RegDstMux
+    RtIn            : in std_logic_vector(4 downto 0) ;
+    RdIn            : in std_logic_vector(4 downto 0) ;
     -- EX signals
     ALUSrc          : in std_logic;
     ALUOp           : in std_logic_vector(1 downto 0) ;
@@ -25,7 +27,9 @@ entity ID_EX is
     ReadData1Out    : out std_logic_vector(31 downto 0) ;
     ReadData2Out    : out std_logic_vector(31 downto 0) ;
     SignExtendOut   : out std_logic_vector(31 downto 0) ;
-    FuctioinCodeOut : out std_logic_vector(8 downto 0) ;
+    FuctionCodeOut : out std_logic_vector(8 downto 0) ;
+    RtOut           : out std_logic_vector(4 downto 0) ;
+    RdOut           : out std_logic_vector(4 downto 0) ;
 
     ALUSrcOut       : out std_logic;
     ALUOpOut        : out std_logic_vector(1 downto 0) ;
@@ -46,12 +50,16 @@ begin
                 ReadData1Out <= (others => '0');
                 ReadData2Out <= (others => '0');
                 SignExtendOut <= (others => '0');
-                FuctioinCodeOut <= (others => '0');
+                FuctionCodeOut <= (others => '0');
+                RtOut <= (others => '0');
+                RdOut <= (others => '0');
             else
                 ReadData1Out <= ReadData1In;
                 ReadData2Out <= ReadData2In;
                 SignExtendOut <= SignExtendIn;
                 FuctionCodeOut <= FunctionCodeIn;
+                RtOut <= RtIn;
+                RdOut <= RdIn;
             end if;
         end if;
     end process ; -- ID_EX

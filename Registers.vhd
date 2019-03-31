@@ -1,16 +1,18 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
 
  entity Registers is
     port(
-        Reg_write: in std_logic; -- output from controller
-        Read_reg_1: in std_logic_vector(4 downto 0); -- output instruction[25-21] from instruction memory
-        Read_reg_2: in std_logic_vector(4 downto 0); -- output instruction[20-16] from instruction memory
+        Clock: in std_logic;
+        Reg_write: in std_logic;
+        Read_reg_1: in std_logic_vector(4 downto 0);
+        Read_reg_2: in std_logic_vector(4 downto 0);
 
-         Write_register: in std_logic_vector(4 downto 0); 
+        Write_register: in std_logic_vector(4 downto 0); 
         Write_data: in std_logic_vector(31 downto 0);
 
-         Read_data_1: out std_logic_vector(31 downto 0)
+        Read_data_1: out std_logic_vector(31 downto 0);
         Read_data_2: out std_logic_vector(31 downto 0)
         );
 end Registers;
@@ -20,7 +22,8 @@ end Registers;
 
      type Mem_array is array(0 to 31) of STD_LOGIC_VECTOR (31 downto 0);
 
-     signal Reg_mem: Mem_array := (
+     signal Reg_mem: 
+	Mem_array := (
         x"00000000", -- $zero
         x"00000000", -- $at
         x"00000000", -- $v0
@@ -57,11 +60,10 @@ end Registers;
 
 
  begin
-    Register_process : process(Reg_write)
-    -- writeRegister is used to write the register
-    -- writeData is used to save the data
+
+    process(Clock, Reg_write)
     begin
-        if(Reg_write = "1") then
+        if Reg_write = '1' then
             Reg_mem(to_integer(unsigned(Write_register))) <= Write_data;
         end if;
     end process; -- Register_process
@@ -70,4 +72,4 @@ end Registers;
     Read_data_1 <= Reg_mem(to_integer(unsigned(Read_reg_1)));
     Read_data_2 <= Reg_mem(to_integer(unsigned(Read_reg_2)));
 
-  end architecture; -- Behavior 
+  end Behavior;

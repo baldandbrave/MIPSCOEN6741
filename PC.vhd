@@ -23,7 +23,7 @@ architecture Behavior of PC is
 begin
     PC : process( Clock, PCStall )
     begin
-        NextInstAddress <= PCAddressSignal;
+        -- NextInstAddress <= PCAddressSignal;
         if falling_edge(Clock) then
             if PCStall = '1' then
                 NULL; -- hold PC

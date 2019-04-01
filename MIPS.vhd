@@ -28,17 +28,16 @@ architecture Behavior of MIPS is
             InstructionOut: out  std_logic_vector(31 downto 0)
         );
     end component InstructionMemory;
-    signal PC_Adder         : std_logic_vector(31 downto 0) ;
     component Adder is
         port (
             Adder_input: in std_logic_vector(31 downto 0);
             Adder_output: out std_logic_vector(31 downto 0)
         );
     end component Adder;
-    signal Adder_IFID_PCIn  : std_logic_vector(31 downto 0) ;
+    signal Adder_IFID_PCIn  : std_logic_vector(31 downto 0) ; -- Holds result of PC+4
     signal DHU_IFID_Stall   : std_logic;
     signal CHU_IFID_Flush   : std_logic;
-    signal IM_IFID_InstIn   : std_logic_vector(31 downto 0) ;
+    signal IM_IFID_InstIn   : std_logic_vector(31 downto 0) ; -- 32 bit address for holding the instruction after fetching from IM
     component IF_ID is
         port (
             Clock           : in std_logic;
@@ -260,9 +259,9 @@ architecture Behavior of MIPS is
     signal MEMWB_Mux_ReadDataOut: std_logic_vector(31 downto 0) ;
     signal MEMWB_Mux_ALUResultOut: std_logic_vector(31 downto 0) ;
     --------------------------------------------WB-------------------------------------------
-    component Mux32 is
+    component MuxNBit is
         generic (
-            N : integer := 32
+            N : integer := 1
         );
         port (
             MuxControlInput : in std_logic;
@@ -270,7 +269,47 @@ architecture Behavior of MIPS is
             MuxInput_0 : in std_logic_vector ( N - 1 downto 0);
             MuxOutput : out std_logic_vector ( N - 1 downto 0)
         );
-    end component Mux32;
+    signal DestWriteRegister: std_logic_vector(4 downto 0); -- used in ID stage
+    end component MuxNBit;
 begin
+   --- PORT MAPS
+    Program_Counter:
+        PC port map(
+            Clock           => Clock,
+            PCStall         => DHU_PC_PCStall,
+            PrevInstAddress => CHU_PC_PrevInstAddress,
+            NextInstAddress => PC_IM_NextInstAddress
+        );
+    Instruction_Fetch:
+        InstructionMemory port map(
+            InstructionAddress => PC_IM_NextInstAddress,
+            InstructionOut => IM_IFID_InstIn
+        );
+    Instruction_Fetch_Adder:
+        Adder port map(
+            Adder_input => PC_IM_NextInstAddress,
+            Adder_output => Adder_IFID_PCIn  
+        );
+    Instruction_Fetch_IFID:
+        IF_ID port map(
+            Clock => Clock,
+            IFIDStall => DHU_IFID_Stall,
+            IFIDFlush => CHU_IFID_Flush,
+            PCIn => Adder_IFID_PCIn,
+            InstructionIn => IM_IFID_InstIn,
+            PCOut => Adder_IFID_PCIn,
+            InstructionOut => IM_IFID_InstIn
+        );
+        
+    Instruction_Decode_Registers:
+        Registers port map(
+            Reg_write => Ctrl_IDEX_RegDst,
+            Read_reg_1 => IFID_InstOut(28 downto 24),
+            Read_reg_2 => IFID_InstOut(23 downto 19),
+            Write_register => DestWriteRegister,
+            Write_data => MEMWB_Reg_RegWrite,
+            Read_data_1 => Reg_IDEX_ReadData1,
+            Read_data_2 =>Reg_IDEX_ReadData2
+        );
     
 end architecture ; -- Behavior

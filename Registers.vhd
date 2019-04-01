@@ -1,16 +1,16 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-
+use ieee.numeric_std.all;
  entity Registers is
     port(
         Reg_write: in std_logic; -- output from controller
         Read_reg_1: in std_logic_vector(4 downto 0); -- output instruction[25-21] from instruction memory
         Read_reg_2: in std_logic_vector(4 downto 0); -- output instruction[20-16] from instruction memory
 
-         Write_register: in std_logic_vector(4 downto 0); 
+        Write_register: in std_logic_vector(4 downto 0); 
         Write_data: in std_logic_vector(31 downto 0);
 
-         Read_data_1: out std_logic_vector(31 downto 0)
+        Read_data_1: out std_logic_vector(31 downto 0);
         Read_data_2: out std_logic_vector(31 downto 0)
         );
 end Registers;
@@ -61,7 +61,7 @@ end Registers;
     -- writeRegister is used to write the register
     -- writeData is used to save the data
     begin
-        if(Reg_write = "1") then
+        if(Reg_write = '1') then
             Reg_mem(to_integer(unsigned(Write_register))) <= Write_data;
         end if;
     end process; -- Register_process

@@ -1,7 +1,8 @@
 *.bak
 *.mti
 *.opt
-work/_*
+work/
 *.ini
 *.wlf
 *.vstf
+*.mpf

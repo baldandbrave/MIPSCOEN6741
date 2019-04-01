@@ -1,7 +1,6 @@
 *.bak
 *.mti
 *.opt
-*.vhd
 work/
 *.ini
 *.wlf

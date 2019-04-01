@@ -17,12 +17,13 @@ entity ID_EX is
     -- EX signals
     ALUSrc          : in std_logic;
     ALUOp           : in std_logic_vector(1 downto 0) ;
+    RegDst          : in std_logic;
     -- MEM signals
     MemRead         : in std_logic;
     MemWrite        : in std_logic;
     -- WB signals
     MemToReg        : in std_logic;
-    RegDst          : in std_logic;
+    RegWrite        : in std_logic;
 
     ReadData1Out    : out std_logic_vector(31 downto 0) ;
     ReadData2Out    : out std_logic_vector(31 downto 0) ;
@@ -33,10 +34,11 @@ entity ID_EX is
 
     ALUSrcOut       : out std_logic;
     ALUOpOut        : out std_logic_vector(1 downto 0) ;
+    RegDstOut       : out std_logic;
     MemReadOut      : out std_logic;
     MemWriteOut     : out std_logic;
     MemToRegOut     : out std_logic;
-    RegDstOut       : out std_logic
+    RegWriteOut     : out std_logic
   ) ;
 end ID_EX ; 
 
@@ -60,6 +62,13 @@ begin
                 FuctionCodeOut <= FunctionCodeIn;
                 RtOut <= RtIn;
                 RdOut <= RdIn;
+                ALUSrcOut <= ALUSrc;
+                ALUOpOut <= ALUOp;
+                RegDstOut <= RegDst;
+                MemReadOut <= MemRead;
+                MemWriteOut <= MemWrite;
+                MemToRegOut <= MemToReg;
+                RegWriteOut <= RegWrite;
             end if;
         end if;
     end process ; -- ID_EX

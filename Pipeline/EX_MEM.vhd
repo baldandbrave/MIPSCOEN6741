@@ -19,8 +19,12 @@ entity EX_MEM is
 =======
     ALUResultIn     : in std_logic_vector(31 downto 0) ;
     ReadData2In     : in std_logic_vector(31 downto 0) ;
+<<<<<<< HEAD:Pipeline/EX_MEM.vhd
     TargetRegIn        : in std_logic_vector(4 downto 0) ; -- from mux of rt&rd
 >>>>>>> 4bf62585c89b45a32d6f849237f3a233e9be0575:EX_MEM.vhd
+=======
+    TargetRegIn     : in std_logic_vector(4 downto 0) ; -- from mux of rt&rd
+>>>>>>> 62f6d0c445844a1b653432502596c52d775e6468:EX_MEM.vhd
 
     -- MEM signals
     MemReadIn       : in std_logic;
@@ -31,18 +35,22 @@ entity EX_MEM is
     -- WB signals
     MemToReg        : in std_logic;
 <<<<<<< HEAD:Pipeline/EX_MEM.vhd
+<<<<<<< HEAD:Pipeline/EX_MEM.vhd
     RegDst          : in std_logic;   
 =======
     RegWrite          : in std_logic;
+=======
+    RegWrite        : in std_logic;
+>>>>>>> 62f6d0c445844a1b653432502596c52d775e6468:EX_MEM.vhd
 
     ALUResultOut    : out std_logic_vector(31 downto 0) ;
     ReadData2Out    : out std_logic_vector(31 downto 0) ; -- to DM WriteData
-    TargetRegOut       : out std_logic_vector(4 downto 0) ; -- to Reg
+    TargetRegOut    : out std_logic_vector(4 downto 0) ; -- to Reg
     MemReadOut      : out std_logic;
     MemWriteOut     : out std_logic;
 >>>>>>> 4bf62585c89b45a32d6f849237f3a233e9be0575:EX_MEM.vhd
     MemToRegOut     : out std_logic;
-    RegWriteOut       : out std_logic
+    RegWriteOut     : out std_logic
   ) ;
 end EX_MEM ; 
 

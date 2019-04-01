@@ -1,4 +1,4 @@
--- rising_edge(Clock) for write and read Register at the same time, need validation
+-- rising edge write, falling edge read, verified in Registers.
 library ieee ;
     use ieee.std_logic_1164.all ;
     use ieee.numeric_std.all ;
@@ -13,12 +13,12 @@ entity MEM_WB is
 
     -- WB signals
     MemToReg        : in std_logic;
-    RegDst          : in std_logic;
+    RegWrite          : in std_logic;
 
     ReadDataOut     : out std_logic_vector(31 downto 0) ;
     ALUResultOut    : out std_logic_vector(31 downto 0) ;
     MemToRegOut     : out std_logic;
-    RegDstOut       : out std_logic
+    RegWriteOut       : out std_logic
   ) ;
 end MEM_WB ; 
 
@@ -32,6 +32,8 @@ begin
     elsif rising_edge(Clock) then
       ReadDataOut <= ReadDataIn;
       ALUResultOut <= ALUResultIn;
+      MemToRegOut <= MemToReg;
+      RegWriteOut <= RegWrite;
     end if ;
   end process ; -- MEM_WB
 end architecture ;

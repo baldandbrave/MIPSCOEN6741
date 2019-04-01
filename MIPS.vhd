@@ -55,7 +55,7 @@ architecture Behavior of MIPS is
 
     ------------------------------------------ID---------------------------------------------------
     signal IFID_InstOut     : std_logic_vector(31 downto 0) ; -- connect to multiple components
-    signal MEMWB_Reg_RegWrite: std_logic; --TODO: add this signal to all pipe regs
+    signal MEMWB_Reg_RegWrite: std_logic;
     component Registers is
         port (
             Reg_write: in std_logic; -- output from controller
@@ -211,7 +211,7 @@ architecture Behavior of MIPS is
     signal EXMEM_DM_MemRead : std_logic;
     signal EXMEM_DM_MemWrite : std_logic;
     signal EXMEM_ALUResultOut: std_logic_vector(31 downto 0) ;-- connect to DM and MEM_WB
-    -- TODO: add ReadData2 to IDEX and EXMEM
+    signal EXMEM_ReadData2Out: std_logic_vector(31 downto 0) ;
     signal EXMEM_DM_WriteData: std_logic_vector(31 downto 0) ;
     component DataMemory is
         port (
@@ -223,9 +223,9 @@ architecture Behavior of MIPS is
         );
     end component DataMemory;
     signal EXMEM_MEMWB_MemToReg : std_logic;
-    signal EXMEM_MEMWB_RegDst : std_logic;
-    -- TODO: RegWrite
-    signal DM_MEMWB_ReadData : std_logic_vector(31 downto 0) ;
+    signal EXMEM_MEMWB_RegDst   : std_logic;
+    signal EXMEM_MEMWB_RegWrite : std_logic;
+    signal DM_MEMWB_ReadData    : std_logic_vector(31 downto 0) ;
     -- ALUResultIn from EXMEM_ALUResultOut;
     component MEM_WB is
         port (

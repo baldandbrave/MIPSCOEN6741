@@ -25,23 +25,34 @@ entity ALUControl is
 end ALUControl ;
 
 architecture Behavior of ALUControl is
-    -- signal "000": std_logic_vector(2 downto 0) := "000";
-    -- signal "001": std_logic_vector(2 downto 0) := "001";
-    -- signal "010": std_logic_vector(2 downto 0) := "010";
-    -- -- signal "110"NotEqual: std_logic_vector(2 downto 0) := "0011";
-    -- signal "110": std_logic_vector(2 downto 0) := "110";
-    -- signal "111": std_logic_vector(2 downto 0) := "111";
 
     begin
         ALUControl_Process : process(Funct, ALU_op)
         begin
-            ALUControlFunct <= "010" when (ALU_op="00" or (ALU_op="10" and Funct="000100000")) else
-                                "110" when(ALU_op="01" or (ALU_op="10" and Funct="000100010")) else
-                                -- "110"NotEqual when(ALU_op="11") else
-                                "000" when(ALU_op="11" or (ALU_op="10" and Funct="000100100")) else
-                                "001" when(ALU_op="10" and Funct="000100110") else
-                                "111" when(ALU_op="10" and Funct="000101010") else
-                                "000";
+            -- add
+            if (ALU_op="00" or (ALU_op = "10" and Funct = "000100000")) then
+                 ALUControlFunct <= "010";
+	    
+            -- sub
+            elsif (ALU_op="01" or (ALU_op = "10" and Funct = "000100010")) then
+                 ALUControlFunct <= "110";
+	    
+            -- and
+            elsif (ALU_op="11" or (ALU_op = "10" and Funct = "000100100")) then
+                 ALUControlFunct <= "000";
+	    
+            -- xor
+            elsif (ALU_op="10" and Funct="000100110") then
+                 ALUControlFunct <= "001";
+
+            -- slt, set less than
+            elsif (ALU_op="10" and Funct="000101010") then
+                 ALUControlFunct <= "111";
+
+            else
+                 ALUControlFunct <= "000";
+	    end if;
+	
         end process;
 
 

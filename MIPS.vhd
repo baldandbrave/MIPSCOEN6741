@@ -135,27 +135,36 @@ architecture Behavior of MIPS is
             ReadData2In     : in std_logic_vector(31 downto 0) ;
             SignExtendIn    : in std_logic_vector(31 downto 0) ;
             FunctionCodeIn  : in std_logic_vector(8 downto 0) ;
+
+            --for RegDstMux
+            RtIn            : in std_logic_vector(4 downto 0) ;
+            RdIn            : in std_logic_vector(4 downto 0) ;
+
             -- EX signals
             ALUSrc          : in std_logic;
             ALUOp           : in std_logic_vector(1 downto 0) ;
+            RegDst          : in std_logic;
             -- MEM signals
             MemRead         : in std_logic;
             MemWrite        : in std_logic;
             -- WB signals
             MemToReg        : in std_logic;
-            RegDst          : in std_logic;
+            RegWrite        : in std_logic;            
 
             ReadData1Out    : out std_logic_vector(31 downto 0) ;
             ReadData2Out    : out std_logic_vector(31 downto 0) ;
             SignExtendOut   : out std_logic_vector(31 downto 0) ;
-            FuctionCodeOut : out std_logic_vector(8 downto 0) ;
+            FuctionCodeOut  : out std_logic_vector(8 downto 0) ;
+            RtOut           : out std_logic_vector(4 downto 0) ;
+            RdOut           : out std_logic_vector(4 downto 0) ;
 
             ALUSrcOut       : out std_logic;
             ALUOpOut        : out std_logic_vector(1 downto 0) ;
             MemReadOut      : out std_logic;
             MemWriteOut     : out std_logic;
             MemToRegOut     : out std_logic;
-            RegDstOut       : out std_logic
+            RegDstOut       : out std_logic;
+            RegWriteOut       : out std_logic
         );
     end component ID_EX;
 
@@ -191,19 +200,25 @@ architecture Behavior of MIPS is
         port (
             Clock           : in std_logic;
             Reset           : in std_logic;
+
             ALUResultIn     : in std_logic_vector(31 downto 0) ;
-            MemWriteIn      : in std_logic;
+            ReadData2In     : in std_logic_vector(31 downto 0) ;
+            TargetRegIn     : in std_logic_vector(4 downto 0) ; -- from mux of rt&rd
+
             -- MEM signals
             MemRead         : in std_logic;
             MemWrite        : in std_logic;
             -- WB signals
             MemToReg        : in std_logic;
-            RegDst          : in std_logic;
+            RegWrite        : in std_logic;
+
             ALUResultOut    : out std_logic_vector(31 downto 0) ;
+            ReadData2Out    : out std_logic_vector(31 downto 0) ; -- to DM WriteData
+            TargetRegOut    : out std_logic_vector(4 downto 0) ; -- to Reg
             MemReadOut      : out std_logic;
             MemWriteOut     : out std_logic;
             MemToRegOut     : out std_logic;
-            RegDstOut       : out std_logic
+            RegWriteOut     : out std_logic
         );
     end component EX_MEM;
 
@@ -239,7 +254,7 @@ architecture Behavior of MIPS is
             ReadDataOut     : out std_logic_vector(31 downto 0) ;
             ALUResultOut    : out std_logic_vector(31 downto 0) ;
             MemToRegOut     : out std_logic;
-            RegDstOut       : out std_logic
+            RegWriteOut       : out std_logic
         );
     end component MEM_WB;
     signal MEMWB_Mux_ReadDataOut: std_logic_vector(31 downto 0) ;

@@ -28,7 +28,7 @@ entity ID_EX is
     ReadData1Out    : out std_logic_vector(31 downto 0) ;
     ReadData2Out    : out std_logic_vector(31 downto 0) ;
     SignExtendOut   : out std_logic_vector(31 downto 0) ;
-    FuctionCodeOut : out std_logic_vector(8 downto 0) ;
+    FuctionCodeOut  : out std_logic_vector(8 downto 0) ;
     RtOut           : out std_logic_vector(4 downto 0) ;
     RdOut           : out std_logic_vector(4 downto 0) ;
 

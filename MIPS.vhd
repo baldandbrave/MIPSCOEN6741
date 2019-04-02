@@ -172,6 +172,7 @@ architecture Behavior of MIPS is
     signal IDEX_Mux_ReadData2        : std_logic_vector(31 downto 0) ;
     signal IDEX_Mux_Immediate        : std_logic_vector(31 downto 0) ;
     signal IDEX_Mux_ALUSrc : std_logic;
+    signal IDEX_ALUOpOut: std_logic_vector(1 downto 0);
     signal IDEX_ALUCtrl_Funct : std_logic_vector(8 downto 0) ;
     component ALUControl is
         port (
@@ -256,9 +257,12 @@ architecture Behavior of MIPS is
             RegWriteOut       : out std_logic
         );
     end component MEM_WB;
+    signal MEMWB_MemToRegOut: std_logic; -- Output Control signal from the MEMWB Pipe Regs
     signal MEMWB_Mux_ReadDataOut: std_logic_vector(31 downto 0) ;
     signal MEMWB_Mux_ALUResultOut: std_logic_vector(31 downto 0) ;
     --------------------------------------------WB-------------------------------------------
+    signal MUX_DestWriteRegister: std_logic_vector(4 downto 0); -- used in ID stage
+    signal EX_MUX_Out_ALURightOperand: : std_logic_vector(31 downto 0); 
     component MuxNBit is
         generic (
             N : integer := 1
@@ -269,7 +273,7 @@ architecture Behavior of MIPS is
             MuxInput_0 : in std_logic_vector ( N - 1 downto 0);
             MuxOutput : out std_logic_vector ( N - 1 downto 0)
         );
-    signal DestWriteRegister: std_logic_vector(4 downto 0); -- used in ID stage
+    
     end component MuxNBit;
 begin
    --- PORT MAPS
@@ -300,16 +304,171 @@ begin
             PCOut => Adder_IFID_PCIn,
             InstructionOut => IM_IFID_InstIn
         );
-        
+    
+    Instruction_Decode_MUX:
+        GENERIC MAP( N => 5 )
+        MuxNBit port map(
+            MuxControlInput => Ctrl_IDEX_RegDst,
+            MuxInput_1      => IM_IFID_InstIn(23 downto 19),
+            MuxInput_0      => IM_IFID_InstIn(18 downto 14),
+            MuxOutput       => MUX_DestWriteRegister,
+        );
+
     Instruction_Decode_Registers:
         Registers port map(
             Reg_write => Ctrl_IDEX_RegDst,
             Read_reg_1 => IFID_InstOut(28 downto 24),
             Read_reg_2 => IFID_InstOut(23 downto 19),
-            Write_register => DestWriteRegister,
+            Write_register => MUX_DestWriteRegister,
             Write_data => MEMWB_Reg_RegWrite,
             Read_data_1 => Reg_IDEX_ReadData1,
             Read_data_2 =>Reg_IDEX_ReadData2
         );
+    Control_Path:
+        Controller port map(
+            opCode => IFID_InstOut(31 downto 29),
+            RegDst => Ctrl_IDEX_RegDst,
+            --Jump   
+            --Branch 
+            MemRead => Ctrl_IDEX_MemRead,
+            MemToReg => Ctrl_IDEX_MemToReg,
+            ALUOp   => Ctrl_IDEX_ALUOp,
+            MemWrite => Ctrl_IDEX_MemWrite,
+            ALUSrc  => Ctrl_IDEX_ALUSrc,
+            RegWrite => EXMEM_MEMWB_RegWrite
+        );
+    DHU:
+        DataHazardUnit port map(
+            Clock     => Clock,
+            IFIDInst  => IFID_InstOut,
+            IDEXInst  => IDEX_InstOut,
+            EXMEMInst => EXMEM_InstOut,
+            PCStall   => DHU_PC_PCStall,
+            IFIDStall => DHU_IFID_Stall,
+           -- IDEXFlush =>
+        );
+    CHU:
+        ControlHazardUnit port map(
+            Clock       => Clock,
+            ReadData1   => Reg_IDEX_ReadData1,
+            ReadData2   => Reg_IDEX_ReadData2,
+            PCPlus4     =>
+            Immediate   =>
+            OpCode      => IFID_InstOut(31 downto 29),
+            Funct       => 
+            NewPc       =>
+            IFIDFlush   =>
+        );
     
+    Instruction_Execute_ID_EX:
+        ID_EX:
+            Clock          => Clock,
+       --IDEXFlush      => 
+            ReadData1In    => Reg_IDEX_ReadData1,  
+            ReadData2In    => Reg_IDEX_ReadData2,
+            SignExtendIn   => SignExtend_IDEX,
+            FunctionCodeIn => IDEX_ALUCtrl_Funct,
+            --for RegDstMux
+            RtIn           =>  Reg_IDEX_ReadData1,
+            RdIn           =>  Reg_IDEX_ReadData2,
+            -- EX signals
+            ALUSrc         =>  Ctrl_IDEX_ALUSrc,
+            ALUOp          =>  Ctrl_IDEX_ALUOp,
+            RegDst         =>  Ctrl_IDEX_RegDst,
+            -- MEM signals
+            MemRead        =>  Ctrl_IDEX_MemRead,
+            MemWrite       =>  Ctrl_IDEX_MemWrite,
+            -- WB signals
+            MemToReg       => Ctrl_IDEX_MemToReg,
+            RegWrite       => EXMEM_MEMWB_RegWrite,
+            ReadData1Out   => IDEX_ALU_LeftOp,
+            ReadData2Out   => IDEX_Mux_ReadData2,
+            SignExtendOut  => IDEX_Mux_Immediate,
+            FuctionCodeOut => IDEX_ALUCtrl_Funct,
+           -- RtOut          => TODO
+           -- RdOut          => TODO Dont understand why is it required?
+            ALUSrcOut      => IDEX_Mux_ALUSrc,
+            ALUOpOut       => IDEX_ALUOpOut,
+            MemReadOut     => IDEX_EXMEM_MemRead,
+            MemWriteOut    => IDEX_EXMEM_MemWrite,
+            MemToRegOut    => IDEX_EXMEM_MemToReg,
+            RegDstOut      => IDEX_EXMEM_MemRegDst,
+            RegWriteOut    => EXMEM_MEMWB_RegWrite
+            );
+    Instruction_Execute_ALUControl:
+        ALUControl port map(
+            Funct           => IDEX_ALUCtrl_Funct,
+            ALU_op          => IDEX_ALUOpOut,
+            ALUControlFunct => ALUCtrl_ALU_ALUCtrlFunc
+            );
+    
+    Instruction_Execute_MUX:
+    GENERIC MAP( N => 32 )
+        MuxNBit port map(
+            MuxControl => IDEX_Mux_ALUSrc,
+            MuxInput_1 => IDEX_Mux_ReadData2,
+            MuxInput_0 => IDEX_Mux_Immediate,
+            MuxOutput  => EX_MUX_Out_ALURightOperand
+
+        );
+    Instruction_Execute_ALU:
+        ALU port map(
+            LeftOperand  => IDEX_ALU_LeftOp,
+            RightOperand => EX_MUX_Out_ALURightOperand,
+            ALUControl   => ALUCtrl_ALU_ALUCtrlFunc,
+            ALUResult    => ALU_EXMEM_ALUResult,
+          --  Zero         =>   TODO 
+        );
+    MemoryRW_EX_MEM:
+        EX_MEM port map(
+            Clock      => Clock, 
+            --Reset       
+            ALUResultIn => ALU_EXMEM_ALUResult,
+            ReadData2In => IDEX_Mux_ReadData2,
+            --TargetRegIn => 
+            -- MEM controller signals
+            MemRead     => IDEX_EXMEM_MemRead, 
+            MemWrite    => IDEX_EXMEM_MemWrite,   
+            -- WB controller signal
+            MemToReg    => IDEX_EXMEM_MemToReg,
+            RegWrite    => IDEX_EXMEM_MemRegDst,
+                
+            ALUResultOut => EXMEM_ALUResultOut,
+            ReadData2Out => EXMEM_ReadData2Out,
+            --TargetRegOut
+            MemReadOut  => EXMEM_DM_MemRead,
+            MemWriteOut => EXMEM_DM_MemWrite,
+            MemToRegOut => EXMEM_MEMWB_MemToReg,
+            RegWriteOut => EXMEM_MEMWB_RegWrite
+        );
+    MemoryRW_DataMemory:
+        DataMemory port map(
+            MemRead  => EXMEM_DM_MemRead,-- controller signals
+            MemWrite => EXMEM_DM_MemWrite,-- controller signals
+            Address  => EXMEM_ALUResultOut,-- Input from ALU
+            WriteData=> EXMEM_ReadData2Out,
+            ReadData => DM_MEMWB_ReadData-- Output for Write Back
+        );
+    WriteBack_MEM_WB:
+        MEM_WB port map(
+            Clock        => Clock, 
+            --Reset        => 
+            ReadDataIn   => DM_MEMWB_ReadData,
+            ALUResultIn  => EXMEM_ALUResultOut,
+            -- WB signals
+            MemToReg     => EXMEM_MEMWB_MemToReg,  
+            RegDst       => 
+            ReadDataOut  => MEMWB_Mux_ReadDataOut,
+            ALUResultOut => MEMWB_Mux_ALUResultOut,
+            MemToRegOut  => MEMWB_MemToRegOut,
+           -- RegWriteOut  => 
+        );
+    WB_MUX:
+    GENERIC MAP( N => 32 )
+        MuxNBit port map(
+            MuxControlInput => MEMWB_MemToRegOut,
+            MuxInput_1      => MEMWB_Mux_ALUResultOut,
+            MuxInput_0      => MEMWB_Mux_ReadDataOut,
+            MuxOutput       => MEMWB_Reg_RegWrite
+        );
 end architecture ; -- Behavior

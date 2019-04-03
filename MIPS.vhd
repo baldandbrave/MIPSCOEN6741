@@ -251,6 +251,7 @@ architecture Behavior of MIPS is
             ReadDataIn      : in std_logic_vector(31 downto 0) ;
             ALUResultIn     : in std_logic_vector(31 downto 0) ;
             TargetRegIn     : in std_logic_vector(4 downto 0) ;
+            RegWrite        : in std_logic;
             -- WB signals
             MemToReg        : in std_logic;
             ReadDataOut     : out std_logic_vector(31 downto 0) ;
@@ -454,6 +455,7 @@ begin
             ReadDataIn   => DM_MEMWB_ReadData,
             ALUResultIn  => ALU_EXMEM_ALUResultOut,
             TargetRegIn  => EXMEM_MEMWB_TargetReg,
+            RegWrite     => EXMEM_MEMWB_RegWrite,
             -- WB signals
             MemToReg     => EXMEM_MEMWB_MemToReg,  
             TargetRegOut => MEMWB_Reg_TargetReg,

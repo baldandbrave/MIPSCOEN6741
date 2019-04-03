@@ -7,17 +7,15 @@ entity ID_EX is
     Clock           : in std_logic;
     IDEXFlush       : in std_logic;
 
+    IFIDInstIn      : in std_logic_vector(31 downto 0) ;
+    TargetRegIn     : in std_logic_vector(4 downto 0) ;
     ReadData1In     : in std_logic_vector(31 downto 0) ;
     ReadData2In     : in std_logic_vector(31 downto 0) ;
     SignExtendIn    : in std_logic_vector(31 downto 0) ;
     FunctionCodeIn  : in std_logic_vector(8 downto 0) ;
-    -- for RegDstMux
-    RtIn            : in std_logic_vector(4 downto 0) ;
-    RdIn            : in std_logic_vector(4 downto 0) ;
     -- EX signals
     ALUSrc          : in std_logic;
     ALUOp           : in std_logic_vector(1 downto 0) ;
-    RegDst          : in std_logic;
     -- MEM signals
     MemRead         : in std_logic;
     MemWrite        : in std_logic;
@@ -25,16 +23,15 @@ entity ID_EX is
     MemToReg        : in std_logic;
     RegWrite        : in std_logic;
 
+    IDEXInstOut     : out std_logic_vector(31 downto 0) ;
+    TargetRegOut    : out std_logic_vector(4 downto 0) ;
     ReadData1Out    : out std_logic_vector(31 downto 0) ;
     ReadData2Out    : out std_logic_vector(31 downto 0) ;
     SignExtendOut   : out std_logic_vector(31 downto 0) ;
     FuctionCodeOut  : out std_logic_vector(8 downto 0) ;
-    RtOut           : out std_logic_vector(4 downto 0) ;
-    RdOut           : out std_logic_vector(4 downto 0) ;
 
     ALUSrcOut       : out std_logic;
     ALUOpOut        : out std_logic_vector(1 downto 0) ;
-    RegDstOut       : out std_logic;
     MemReadOut      : out std_logic;
     MemWriteOut     : out std_logic;
     MemToRegOut     : out std_logic;
@@ -53,18 +50,17 @@ begin
                 ReadData2Out <= (others => '0');
                 SignExtendOut <= (others => '0');
                 FuctionCodeOut <= (others => '0');
-                RtOut <= (others => '0');
-                RdOut <= (others => '0');
+                IDEXInstOut <= (others => '0');
+                TargetRegOut <= (others => '0');
             else
+                IDEXInstOut <= IFIDInstIn;
+                TargetRegOut <= TargetRegIn;
                 ReadData1Out <= ReadData1In;
                 ReadData2Out <= ReadData2In;
                 SignExtendOut <= SignExtendIn;
                 FuctionCodeOut <= FunctionCodeIn;
-                RtOut <= RtIn;
-                RdOut <= RdIn;
                 ALUSrcOut <= ALUSrc;
                 ALUOpOut <= ALUOp;
-                RegDstOut <= RegDst;
                 MemReadOut <= MemRead;
                 MemWriteOut <= MemWrite;
                 MemToRegOut <= MemToReg;

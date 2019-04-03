@@ -5,7 +5,6 @@ library ieee ;
 entity IF_ID is
   port (
     Clock           : in std_logic;
-    Reset           : in std_logic;
     -- stall in data hazard
     IFIDStall       : in std_logic;
     -- flush in control hazard
@@ -22,12 +21,9 @@ end IF_ID ;
 architecture Behavior of IF_ID is
 
 begin
-    IF_ID : process( Clock, Reset, IFIDStall, IFIDFlush )
+    IF_ID : process( Clock, IFIDStall, IFIDFlush )
     begin
-        if Reset = '1' then
-            PCOut <= (others => '0');
-            InstructionOut <= (others => '0');
-        elsif falling_edge(Clock) then
+        if falling_edge(Clock) then
             if IFIDStall = '1' then -- hold output
                 NULL;
             elsif IFIDFlush = '1' then -- set output to 0.

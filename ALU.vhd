@@ -8,7 +8,7 @@ use ieee.numeric_std.all;
 entity ALU is
   port (
     LeftOperand  : in std_logic_vector(31 downto 0);
-    RightOperand : in std_logic_vector(31                                                                                                                                                                                                                                                                              downto 0);
+    RightOperand : in std_logic_vector(31 downto 0);
     ALUControl   : in std_logic_vector(2 downto 0);
     ALUResult    : out std_logic_vector(31 downto 0) ;
     Zero: out std_logic

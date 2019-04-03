@@ -96,7 +96,7 @@ architecture Behavior of MIPS is
         );
     end component DataHazardUnit;
     signal IFID_CHU_PCPlus4   : std_logic_vector(31 downto 0) ;
-    component ControlHazrdUnit is
+    component ControlHazardUnit is
         port (
             Clock     : in std_logic;
             ReadData1 : in std_logic_vector(31 downto 0) ; -- output of register
@@ -110,7 +110,7 @@ architecture Behavior of MIPS is
             -- all 0: and r0, r0, r0, doesn't change value of $zero.
             IFIDFlush : out std_logic
         );
-    end component ControlHazrdUnit;
+    end component ControlHazardUnit;
     component SignExtend is
         port (
             SignExtend_in: in std_logic_vector(18 downto 0);
@@ -144,7 +144,6 @@ architecture Behavior of MIPS is
             -- EX signals
             ALUSrc          : in std_logic;
             ALUOp           : in std_logic_vector(1 downto 0) ;
-            RegDst          : in std_logic;
             -- MEM signals
             MemRead         : in std_logic;
             MemWrite        : in std_logic;
@@ -164,7 +163,6 @@ architecture Behavior of MIPS is
             MemReadOut      : out std_logic;
             MemWriteOut     : out std_logic;
             MemToRegOut     : out std_logic;
-            RegDstOut       : out std_logic;
             RegWriteOut       : out std_logic
         );
     end component ID_EX;
@@ -197,14 +195,13 @@ architecture Behavior of MIPS is
     signal IDEX_EXMEM_MemRead : std_logic;
     signal IDEX_EXMEM_MemWrite : std_logic;
     signal IDEX_EXMEM_MemToReg : std_logic;
-    signal IDEX_EXMEM_MemRegDst : std_logic;
+    signal IDEX_EXMEM_RegWrite : std_logic;
     signal IDEX_EXMEM_TargetReg : std_logic_vector(4 downto 0) ;
     component EX_MEM is
         port (
             Clock           : in std_logic;
 
             IDEXInstIn      : in std_logic_vector(31 downto 0) ;
-            TargetRegIn     : in std_logic_vector(4 downto 0) ;
             ALUResultIn     : in std_logic_vector(31 downto 0) ;
             ReadData2In     : in std_logic_vector(31 downto 0) ;
             TargetRegIn     : in std_logic_vector(4 downto 0) ; -- from mux of rt&rd
@@ -217,7 +214,6 @@ architecture Behavior of MIPS is
             RegWrite        : in std_logic;
 
             EXMEMInstOut    : out std_logic_vector(31 downto 0) ;
-            TargetRegOut    : out std_logic_vector(4 downto 0) ;
             ALUResultOut    : out std_logic_vector(31 downto 0) ;
             ReadData2Out    : out std_logic_vector(31 downto 0) ; -- to DM WriteData
             TargetRegOut    : out std_logic_vector(4 downto 0) ; -- to Reg
@@ -257,7 +253,6 @@ architecture Behavior of MIPS is
             TargetRegIn     : in std_logic_vector(4 downto 0) ;
             -- WB signals
             MemToReg        : in std_logic;
-            RegDst          : in std_logic;
             ReadDataOut     : out std_logic_vector(31 downto 0) ;
             ALUResultOut    : out std_logic_vector(31 downto 0) ;
             TargetRegOut    : out std_logic_vector(4 downto 0) ;
@@ -360,7 +355,7 @@ begin
             ReadData1   => Reg_IDEX_ReadData1,
             ReadData2   => Reg_IDEX_ReadData2,
             PCPlus4     => IFID_CHU_PCPlus4,
-            Immediate   => IFID_InstOut(18 downto 0),
+            Immediate   => SignExtend_IDEX,
             OpCode      => IFID_InstOut(31 downto 29),
             Funct       => IFID_InstOut(8 downto 0),
             NewPc       => CHU_PC_PrevInstAddress,
@@ -380,7 +375,6 @@ begin
             -- EX signals
             ALUSrc         =>  Ctrl_IDEX_ALUSrc,
             ALUOp          =>  Ctrl_IDEX_ALUOp,
-            RegDst         =>  Ctrl_IDEX_RegDst,
             -- MEM signals
             MemRead        =>  Ctrl_IDEX_MemRead,
             MemWrite       =>  Ctrl_IDEX_MemWrite,
@@ -398,7 +392,6 @@ begin
             MemReadOut     => IDEX_EXMEM_MemRead,
             MemWriteOut    => IDEX_EXMEM_MemWrite,
             MemToRegOut    => IDEX_EXMEM_MemToReg,
-            RegDstOut      => IDEX_EXMEM_TargetReg,
             RegWriteOut    => EXMEM_MEMWB_RegWrite
             );
 --------------------------------------EX---------------------------------------
@@ -410,7 +403,7 @@ begin
             );
     Instruction_Execute_MUX:
         MuxNBit GENERIC MAP( N => 32 ) port map(
-            MuxControl => IDEX_Mux_ALUSrc,
+            MuxControlInput => IDEX_Mux_ALUSrc,
             MuxInput_1 => IDEX_Mux_ReadData2,
             MuxInput_0 => IDEX_Mux_Immediate,
             MuxOutput  => EX_MUX_Out_ALURightOperand
@@ -436,7 +429,7 @@ begin
             MemWrite    => IDEX_EXMEM_MemWrite,   
             -- WB controller signal
             MemToReg    => IDEX_EXMEM_MemToReg,
-            RegWrite    => IDEX_EXMEM_MemRegDst,
+            RegWrite    => IDEX_EXMEM_RegWrite, --FIXME
                 
             EXMEMInstOut => EXMEM_InstOut,
             TargetRegOut => EXMEM_MEMWB_TargetReg,

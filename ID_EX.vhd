@@ -12,7 +12,7 @@ entity ID_EX is
     ReadData1In     : in std_logic_vector(31 downto 0) ;
     ReadData2In     : in std_logic_vector(31 downto 0) ;
     SignExtendIn    : in std_logic_vector(31 downto 0) ;
-    FunctionCodeIn  : in std_logic_vector(8 downto 0) 
+    FunctionCodeIn  : in std_logic_vector(8 downto 0) ;
     -- EX signals
     ALUSrc          : in std_logic;
     ALUOp           : in std_logic_vector(1 downto 0) ;

@@ -6,7 +6,7 @@ library ieee ;
     use ieee.std_logic_1164.all ;
     use ieee.numeric_std.all ;
 
-entity DataHarzardUnit is
+entity DataHazardUnit is
   port (
     
     Clock       : in std_logic;
@@ -19,9 +19,9 @@ entity DataHarzardUnit is
     IFIDStall   : out std_logic;
     IDEXFlush   : out std_logic -- set operand & control signal to 0, insert bubble.
   ) ;
-end DataHarzardUnit ; 
+end DataHazardUnit ; 
 
-architecture Behavior of DataHarzardUnit is
+architecture Behavior of DataHazardUnit is
     -- init counter as 0
     signal StallCounter : integer := 0;
 
@@ -44,7 +44,7 @@ begin
     XorResult3 <= EXMEMRd xor IFIDRs;
     XorResult4 <= EXMEMRd xor IFIDRt;
 
-    DataHarzard : process( Clock, IFIDInst, IDEXInst, EXMEMInst)
+    DataHazard : process( Clock, IFIDInst, IDEXInst, EXMEMInst)
     begin
         if XorResult1="00000" or XorResult2="00000" then
             -- stall 2
@@ -70,5 +70,5 @@ begin
             end if ;
         end if ;
 
-    end process ; -- DataHarzard
+    end process ; -- DataHazard
 end architecture ;

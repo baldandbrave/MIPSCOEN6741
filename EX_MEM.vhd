@@ -36,6 +36,7 @@ begin
   begin
     if falling_edge(Clock) then
       EXMEMInstOut <= IDEXInstIn;
+      TargetRegOut <= TargetRegIn;
       ALUResultOut <= ALUResultIn;
       MemReadOut <= MemRead;
       MemWriteOut <= MemWrite;

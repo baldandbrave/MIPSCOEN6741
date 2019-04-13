@@ -35,7 +35,7 @@ begin
 				ALUOp         <= "10";
 				MemWrite      <= '0';
 				ALUsrc        <= '0';
-				RegWrite      <= '1' after 10 ns;
+				RegWrite      <= '1';
 		when "001" => -- and immediate(andi): 0x0C 
 				RegDst        <= '0';
 				Jump          <= '0';
@@ -46,7 +46,7 @@ begin
 				ALUOp					<= "11"; -- no refence from internet, set to 11(not used in other impl)
 				MemWrite      <= '0';
 				ALUsrc        <= '1';
-				RegWrite      <= '1' after 10 ns;
+				RegWrite      <= '1';
 		when "010" => -- subtract immediate(subi), assigned opcode 8
 				RegDst        <= '0';
 				Jump          <= '0';
@@ -56,7 +56,7 @@ begin
 				ALUOp         <= "01";
 				MemWrite      <= '0';
 				ALUsrc        <= '1';
-				RegWrite      <= '1' after 10 ns;
+				RegWrite      <= '1';
 		when "011" => -- Branch equal(beq): 0x04
 				RegDst        <= 'X'; -- don't care
 				Jump          <= '0';
@@ -76,7 +76,7 @@ begin
 				ALUOp         <= "00";
 				MemWrite      <= '0';
 				ALUsrc        <= '1';
-				RegWrite      <= '1' after 10 ns;
+				RegWrite      <= '1';
 		when "101" => -- store word(sw): 0x2B
 				RegDst        <= 'X'; -- don't care
 				Jump          <= '0';

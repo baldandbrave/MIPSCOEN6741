@@ -74,7 +74,7 @@ process (InstructionAddress)
 			when "00000000000000000000000000111100" => 
                 InstructionOut <= IM(15);
 			when others => 
-		InstructionOut <= "11111111111111111111111111111111";
+		InstructionOut <= x"00000000";
 		end case;
 
 	end process;

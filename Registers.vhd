@@ -4,8 +4,8 @@ use ieee.numeric_std.all;
  entity Registers is
     port(
         Reg_write: in std_logic; -- output from controller
-        Read_reg_1: in std_logic_vector(4 downto 0); -- output instruction[25-21] from instruction memory
-        Read_reg_2: in std_logic_vector(4 downto 0); -- output instruction[20-16] from instruction memory
+        Read_reg_1: in std_logic_vector(4 downto 0); -- output instruction[28-24] from instruction memory
+        Read_reg_2: in std_logic_vector(4 downto 0); -- output instruction[23-19] from instruction memory
 
         Write_register: in std_logic_vector(4 downto 0); 
         Write_data: in std_logic_vector(31 downto 0);
@@ -29,8 +29,8 @@ end Registers;
         x"00000000", -- $a1
         x"00000000", -- $a2
         x"00000000", -- $a3
-        x"00000000", -- $t0
-        x"00000000", -- $t1
+        x"00000111", -- $t0
+        x"00000222", -- $t1
         x"00000000", -- $t2 (mem 10) 
         x"00000000", -- $t3
         x"00000000", -- $t4
@@ -40,7 +40,7 @@ end Registers;
         x"00000000", -- $s0
         x"00000000", -- $s1
         x"00000000", -- $s2
-        x"00000000", -- $s3
+        x"00000010", -- $s3
         x"00000000", -- $s4 (mem 20)
         x"00000000", -- $s5
         x"00000000", -- $s6

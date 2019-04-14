@@ -5,7 +5,7 @@
 library ieee ;
     use ieee.std_logic_1164.all ;
     use ieee.numeric_std.all ;
-    use ieee.std_logic_unsigned.all;
+    use ieee.std_logic_signed.all;
 
 
 entity ControlHazardUnit is
@@ -35,25 +35,28 @@ begin
       XorResult <= ReadData1 xor ReadData2;
       if (XorResult= x"00000000") and (Opcode = "011") then -- beq
         NewPC <= PCPlus4 + Immediate ; 
-        FlushCounter <= 1;
+        -- FlushCounter <= 1;
         IFIDFlush <= '1';
       elsif OpCode = "000" and Funct = "000001000" then -- jr
         NewPC <= ReadData1; -- TODO: which one?
-        FlushCounter <= 1;
+        -- FlushCounter <= 1;
         IFIDFlush <= '1';
       else
         NewPC <= PCPlus4; -- no branch
       end if ;
 
       -- same logic as DataHazardUnit, control on rising edge, before update.
-      if rising_edge(Clock) then
-        if FlushCounter > 0 then
-          FlushCounter <= FlushCounter - 1;
-          IFIDFlush <= '1';
-        else
-          IFIDFlush <= '0';
-        end if ;
-    end if ;
+      -- if rising_edge(Clock) then
+      --   if FlushCounter > 0 then
+      --     FlushCounter <= FlushCounter - 1;
+      --     IFIDFlush <= '1';
+      --   else
+      --     IFIDFlush <= '0';
+      --   end if ;
+      -- end if ;
+      if falling_edge(Clock) then
+          IFIDFlush<='0';
+      end if ;
     end process ; -- ControlHazardUnit
 
 end architecture ;

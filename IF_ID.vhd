@@ -27,7 +27,7 @@ begin
             if IFIDStall = '1' then -- hold output
                 NULL;
             elsif IFIDFlush = '1' then -- set output to 0.
-                PCOut <= (others => '0');
+                PCOut <= PCIn;
                 InstructionOut <= (others => '0');
             else
                 PCOut <= PCIn;

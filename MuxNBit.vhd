@@ -16,15 +16,16 @@ end MuxNBit;
 
 architecture Behavioral of MuxNBit is
 begin
-        Mux : process( MuxControlInput )
-        begin
-            case ( MuxControlInput ) is
-		when '0' =>
-			MuxOutput <= MuxInput_0;
-		when '1' =>
-			MuxOutput <= MuxInput_1;
-                when others  => NULL;
-           end case;
-        end process ; -- identifier
-
+        -- Mux : process( MuxControlInput )
+        -- begin
+        --     case ( MuxControlInput ) is
+		-- when '0' =>
+		-- 	MuxOutput <= MuxInput_0;
+		-- when '1' =>
+		-- 	MuxOutput <= MuxInput_1;
+        --         when others  => NULL;
+        --    end case;
+        -- end process ; -- identifier
+    MuxOutput <= MuxInput_0 when MuxControlInput='0' else
+                 MuxInput_1 when MuxControlInput='1';
 end architecture ;

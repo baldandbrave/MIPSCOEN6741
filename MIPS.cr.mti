@@ -1,112 +1,5 @@
-C:/Users/onthe/Desktop/MIPSCOEN6741/MEM_WB.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/MEM_WB.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity MEM_WB
--- Compiling architecture Behavior of MEM_WB
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/Mux32.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/Mux32.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity Mux32
--- Compiling architecture Behavior of Mux32
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/SignExtend.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/SignExtend.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity SignExtend
--- Compiling architecture Behavior of SignExtend
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/ID_EX.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/ID_EX.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity ID_EX
--- Compiling architecture Behavior of ID_EX
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/ALU.vhd {1 {vcom -work work -93 -explicit -stats=none {C:\Users\onthe\Desktop\MIPSCOEN6741\ALU.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity ALU
--- Compiling architecture Behavior of ALU
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/IF_ID.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/IF_ID.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity IF_ID
--- Compiling architecture Behavior of IF_ID
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/EX_MEM.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/EX_MEM.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity EX_MEM
--- Compiling architecture Behavior of EX_MEM
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity PC
--- Compiling architecture Behavior of PC
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity DataMemory
--- Compiling architecture Behavior of DataMemory
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/ALUControl.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/ALUControl.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity ALUControl
--- Compiling architecture Behavior of ALUControl
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/DataHazardUnit.vhd {1 {vcom -work work -93 -explicit -stats=none {C:\Users\onthe\Desktop\MIPSCOEN6741\DataHazardUnit.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity DataHarzardUnit
--- Compiling architecture Behavior of DataHarzardUnit
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/Controller.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/Controller.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity Controller
--- Compiling architecture Behavior of Controller
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/MuxNBit.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/MuxNBit.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+D:/COEN6741MIPS/MIPSCOEN6741/MuxNBit.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/MuxNBit.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -114,17 +7,17 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity MuxNBit
 -- Compiling architecture Behavioral of MuxNBit
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/Adder.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/Adder.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/MEM_WB.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/MEM_WB.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
--- Compiling entity Adder
--- Compiling architecture Behavior of Adder
+-- Compiling entity MEM_WB
+-- Compiling architecture Behavior of MEM_WB
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/Registers.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/Registers.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/Registers.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/Registers.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -132,24 +25,133 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity Registers
 -- Compiling architecture Behavior of Registers
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/ControlHazardUnit.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/ControlHazardUnit.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/Adder.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/Adder.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
 -- Loading package std_logic_arith
 -- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity ControlHarzardUnit
--- Compiling architecture Behavior of ControlHarzardUnit
+-- Compiling entity Adder
+-- Compiling architecture Behavior of Adder
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/InstructionMemory.vhd {1 {vcom -work work -93 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/InstructionMemory.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/SignExtend.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/SignExtend.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity SignExtend
+-- Compiling architecture Behavior of SignExtend
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/ControlHazardUnit.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/ControlHazardUnit.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_SIGNED
+-- Compiling entity ControlHazardUnit
+-- Compiling architecture Behavior of ControlHazardUnit
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/PC.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/PC.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity PC
+-- Compiling architecture Behavior of PC
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/ALUControl.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/ALUControl.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ALUControl
+-- Compiling architecture Behavior of ALUControl
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/DataMemory.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/DataMemory.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity DataMemory
+-- Compiling architecture Behavior of DataMemory
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/EX_MEM.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/EX_MEM.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity EX_MEM
+-- Compiling architecture Behavior of EX_MEM
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/InstructionMemory.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/InstructionMemory.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
 -- Compiling entity InstructionMemory
 -- Compiling architecture Behavioral of InstructionMemory
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/Controller.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/Controller.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Controller
+-- Compiling architecture Behavior of Controller
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/DataHazardUnit.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/DataHazardUnit.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity DataHazardUnit
+-- Compiling architecture Behavior of DataHazardUnit
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/Mux32.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/Mux32.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity Mux32
+-- Compiling architecture Behavior of Mux32
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/ID_EX.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/ID_EX.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ID_EX
+-- Compiling architecture Behavior of ID_EX
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/ALU.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/ALU.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ALU
+-- Compiling architecture Behavior of ALU
+
+} {} {}} D:/COEN6741MIPS/MIPSCOEN6741/IF_ID.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none D:/COEN6741MIPS/MIPSCOEN6741/IF_ID.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity IF_ID
+-- Compiling architecture Behavior of IF_ID
 
 } {} {}}

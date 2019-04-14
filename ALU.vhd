@@ -17,37 +17,37 @@ end ALU ;
 
 architecture Behavior of ALU is
 
-    signal ALUResultSignal : std_logic_vector(31 downto 0) ;
+    -- signal ALUResult : std_logic_vector(31 downto 0) ;
 
 begin
 
-    ALU : process( LeftOperand, RightOperand, ALUControl )
+    ALU : process( ALUControl )
     begin
         case( ALUControl ) is
         
             when "000" => -- and
-                ALUResultSignal <= LeftOperand and RightOperand;
+                ALUResult <= LeftOperand and RightOperand;
             when "001" => -- xor
-                ALUResultSignal <= LeftOperand xor RightOperand;
+                ALUResult <= LeftOperand xor RightOperand;
             when "010" => -- add
-                ALUResultSignal <= std_logic_vector(unsigned(LeftOperand) + unsigned(RightOperand));
+                ALUResult <= std_logic_vector(unsigned(LeftOperand) + unsigned(RightOperand));
             when "110" => -- sub
-                ALUResultSignal <= std_logic_vector(unsigned(LeftOperand) - unsigned(RightOperand));
+                ALUResult <= std_logic_vector(unsigned(LeftOperand) - unsigned(RightOperand));
             when "111" => -- slt, set less than
-                -- ALUResultSignal <= std_logic_vector(unsigned(LeftOperand < RightOperand));
+                -- ALUResult <= std_logic_vector(unsigned(LeftOperand < RightOperand));
                 if (signed(LeftOperand) < signed(RightOperand)) then
-                    ALUResultSignal <= x"00000001";
+                    ALUResult <= x"00000001";
                 else
-                    ALUResultSignal <= x"00000000";
+                    ALUResult <= x"00000000";
                 end if ;
             when others => -- TODO: nop?
-                ALUResultSignal <= (others => '0'); -- set all bits to 0
+                ALUResult <= (others => '0'); -- set all bits to 0
         end case ;
     end process ; -- ALU
     
     -- after process, set output concurrently
-    ALUResult <= ALUResultSignal;
-    Zero <= '1' when ALUResultSignal = x"00000000"
-            else '0';
+    -- ALUResult <= ALUResult;
+    -- Zero <= '1' when ALUResult = x"00000000"
+    --         else '0';
     
 end architecture ; -- Behavior

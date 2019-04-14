@@ -8,8 +8,8 @@ end entity ; -- MIPS
 
 architecture Behavior of MIPS is
     -------------------------------IF----------------------------------------
-    signal DHU_PC_PCStall   : std_logic := '0';
-    signal CHU_PC_PrevInstAddress  : std_logic_vector(31 downto 0);-- := x"00000000";
+    signal DHU_PC_PCStall   : std_logic ;
+    signal CHU_PC_PrevInstAddress  : std_logic_vector(31 downto 0) ;
     component PC is
         port (
             Clock           : in std_logic;
@@ -18,7 +18,7 @@ architecture Behavior of MIPS is
             NextInstAddress : out std_logic_vector(31 downto 0)
         );
     end component PC;
-    signal PC_IM_NextInstAddress   : std_logic_vector(31 downto 0) := x"00000000";
+    signal PC_IM_NextInstAddress   : std_logic_vector(31 downto 0);
     component InstructionMemory is
         port (
             InstructionAddress: in std_logic_vector(31 downto 0);
@@ -31,10 +31,10 @@ architecture Behavior of MIPS is
             Adder_output: out std_logic_vector(31 downto 0)
         );
     end component Adder;
-    signal Adder_IFID_PCIn  : std_logic_vector(31 downto 0) := x"00000000"; -- Holds result of PC+4
-    signal DHU_IFID_Stall   : std_logic := '0';
-    signal CHU_IFID_Flush   : std_logic := '0';
-    signal IM_IFID_InstIn   : std_logic_vector(31 downto 0) := x"00000000"; -- 32 bit address for holding the instruction after fetching from IM
+    signal Adder_IFID_PCIn  : std_logic_vector(31 downto 0); -- Holds result of PC+4
+    signal DHU_IFID_Stall   : std_logic;
+    signal CHU_IFID_Flush   : std_logic;
+    signal IM_IFID_InstIn   : std_logic_vector(31 downto 0); -- 32 bit address for holding the instruction after fetching from IM
     component IF_ID is
         port (
             Clock           : in std_logic;
@@ -49,9 +49,9 @@ architecture Behavior of MIPS is
     end component IF_ID;
 
     ------------------------------------------ID---------------------------------------------------
-    signal IFID_InstOut     : std_logic_vector(31 downto 0) := x"00000000"; -- connect to multiple components
-    signal MEMWB_Reg_RegWrite: std_logic := '0';
-    signal WB_Reg_WriteData : std_logic_vector(31 downto 0) := x"00000000";
+    signal IFID_InstOut     : std_logic_vector(31 downto 0) ; -- connect to multiple components
+    signal MEMWB_Reg_RegWrite: std_logic;
+    signal WB_Reg_WriteData : std_logic_vector(31 downto 0) ;
     signal MEMWB_Reg_TargetReg : std_logic_vector(4 downto 0);
     component Registers is
         port (
@@ -78,8 +78,8 @@ architecture Behavior of MIPS is
             RegWrite: out std_logic
         );
     end component Controller;
-    signal IDEX_InstOut : std_logic_vector(31 downto 0) := x"00000000";
-    signal EXMEM_InstOut: std_logic_vector(31 downto 0) := x"00000000";
+    signal IDEX_InstOut : std_logic_vector(31 downto 0) ;
+    signal EXMEM_InstOut: std_logic_vector(31 downto 0) ;
     component DataHazardUnit is
         port (
             Clock       : in std_logic;
@@ -92,7 +92,7 @@ architecture Behavior of MIPS is
             IDEXFlush   : out std_logic -- set operand & control signal to 0, insert bubble.
         );
     end component DataHazardUnit;
-    signal IFID_CHU_PCPlus4   : std_logic_vector(31 downto 0) :=x"00000004" ;
+    signal IFID_CHU_PCPlus4   : std_logic_vector(31 downto 0) ;
     component ControlHazardUnit is
         port (
             Clock     : in std_logic;
@@ -114,19 +114,19 @@ architecture Behavior of MIPS is
             SignExtend_out: out std_logic_vector(31 downto 0)
         );
     end component SignExtend;
-    signal Reg_IDEX_ReadData1: std_logic_vector(31 downto 0) :=x"00000000";
-    signal Reg_IDEX_ReadData2: std_logic_vector(31 downto 0) :=x"00000000";
-    signal SignExtend_IDEX   : std_logic_vector(31 downto 0) :=x"00000000";
+    signal Reg_IDEX_ReadData1: std_logic_vector(31 downto 0) ;
+    signal Reg_IDEX_ReadData2: std_logic_vector(31 downto 0) ;
+    signal SignExtend_IDEX   : std_logic_vector(31 downto 0) ;
     -- func from IFIDOut
-    signal Ctrl_IDEX_ALUSrc   : std_logic := '0';
-    signal Ctrl_IDEX_ALUOp    : std_logic_vector(1 downto 0) := "00";
-    signal Ctrl_IDEX_MemRead  : std_logic := '0';
-    signal Ctrl_IDEX_MemWrite : std_logic := '0';
-    signal Ctrl_IDEX_MemToReg : std_logic := '0';
-    signal Ctrl_Mux_RegDst    : std_logic := '0';
-    signal Ctrl_IDEX_RegWrite : std_logic := '0';
-    signal DHU_IDEX_Flush     : std_logic := '0';
-    signal Mux_IDEX_TargetReg : std_logic_vector(4 downto 0) := "00000";
+    signal Ctrl_IDEX_ALUSrc   : std_logic ;
+    signal Ctrl_IDEX_ALUOp    : std_logic_vector(1 downto 0) ;
+    signal Ctrl_IDEX_MemRead  : std_logic ;
+    signal Ctrl_IDEX_MemWrite : std_logic ;
+    signal Ctrl_IDEX_MemToReg : std_logic ;
+    signal Ctrl_Mux_RegDst    : std_logic ;
+    signal Ctrl_IDEX_RegWrite : std_logic ;
+    signal DHU_IDEX_Flush     : std_logic ;
+    signal Mux_IDEX_TargetReg : std_logic_vector(4 downto 0) ;
     component ID_EX is
         port (
             Clock           : in std_logic;
@@ -165,12 +165,12 @@ architecture Behavior of MIPS is
     end component ID_EX;
 
     --------------------------------------EX---------------------------------------------
-    signal IDEX_ALU_LeftOp : std_logic_vector(31 downto 0) := x"00000000";
-    signal IDEX_Mux_ReadData2        : std_logic_vector(31 downto 0) := x"00000000";
-    signal IDEX_Mux_Immediate        : std_logic_vector(31 downto 0) := x"00000000";
-    signal IDEX_Mux_ALUSrc : std_logic := '0';
-    signal IDEX_ALUOpOut: std_logic_vector(1 downto 0):= "00";
-    signal IDEX_ALUCtrl_Funct : std_logic_vector(8 downto 0) := "000000000";
+    signal IDEX_ALU_LeftOp : std_logic_vector(31 downto 0) ;
+    signal IDEX_Mux_ReadData2        : std_logic_vector(31 downto 0) ;
+    signal IDEX_Mux_Immediate        : std_logic_vector(31 downto 0) ;
+    signal IDEX_Mux_ALUSrc : std_logic ;
+    signal IDEX_ALUOpOut: std_logic_vector(1 downto 0) ;
+    signal IDEX_ALUCtrl_Funct : std_logic_vector(8 downto 0) ;
     component ALUControl is
         port (
             Funct: in std_logic_vector(8 downto 0);
@@ -178,7 +178,7 @@ architecture Behavior of MIPS is
             ALUControlFunct: out std_logic_vector(2 downto 0)
         );
     end component ALUControl;
-    signal ALUCtrl_ALU_ALUCtrlFunc : std_logic_vector(2 downto 0) := "000";
+    signal ALUCtrl_ALU_ALUCtrlFunc : std_logic_vector(2 downto 0) ;
     component ALU is
         port (
             LeftOperand  : in std_logic_vector(31 downto 0);
@@ -188,12 +188,12 @@ architecture Behavior of MIPS is
             Zero: out std_logic
         );
     end component ALU;
-    signal ALU_EXMEM_ALUResult : std_logic_vector(31 downto 0) := x"00000000";
-    signal IDEX_EXMEM_MemRead : std_logic := '0';
-    signal IDEX_EXMEM_MemWrite : std_logic := '0';
-    signal IDEX_EXMEM_MemToReg : std_logic := '0';
-    signal IDEX_EXMEM_RegWrite : std_logic := '0';
-    signal IDEX_EXMEM_TargetReg : std_logic_vector(4 downto 0) := "00000";
+    signal ALU_EXMEM_ALUResult : std_logic_vector(31 downto 0) ;
+    signal IDEX_EXMEM_MemRead : std_logic ;
+    signal IDEX_EXMEM_MemWrite : std_logic ;
+    signal IDEX_EXMEM_MemToReg : std_logic ;
+    signal IDEX_EXMEM_RegWrite : std_logic ;
+    signal IDEX_EXMEM_TargetReg : std_logic_vector(4 downto 0) ;
     component EX_MEM is
         port (
             Clock           : in std_logic;
@@ -222,11 +222,11 @@ architecture Behavior of MIPS is
     end component EX_MEM;
 
     -----------------------------------------MEM----------------------------------------------
-    signal EXMEM_DM_MemRead : std_logic := '0';
-    signal EXMEM_DM_MemWrite : std_logic := '0';
-    signal ALU_EXMEM_ALUResultOut: std_logic_vector(31 downto 0) := x"00000000";-- connect to DM and MEM_WB
-    signal EXMEM_DM_ReadData2Out: std_logic_vector(31 downto 0) := x"00000000";
-    signal EXMEM_DM_WriteData: std_logic_vector(31 downto 0) := x"00000000";
+    signal EXMEM_DM_MemRead : std_logic ;
+    signal EXMEM_DM_MemWrite : std_logic ;
+    signal EXMEM_MEMWB_ALUResultOut: std_logic_vector(31 downto 0) ;-- connect to DM and MEM_WB
+    signal EXMEM_DM_ReadData2Out: std_logic_vector(31 downto 0) ;
+    signal EXMEM_DM_WriteData: std_logic_vector(31 downto 0) ;
     component DataMemory is
         port (
             MemRead   : in std_logic;
@@ -236,12 +236,12 @@ architecture Behavior of MIPS is
             ReadData  : out std_logic_vector(31 downto 0)
         );
     end component DataMemory;
-    signal EXMEM_MEMWB_MemToReg : std_logic := '0';
-    signal EXMEM_MEMWB_RegDst   : std_logic := '0';
-    signal EXMEM_MEMWB_RegWrite : std_logic := '0';
-    signal DM_MEMWB_ReadData    : std_logic_vector(31 downto 0) := x"00000000";
-    signal EXMEM_MEMWB_TargetReg : std_logic_vector(4 downto 0) := "00000";
-    -- ALUResultIn from ALU_EXMEM_ALUResultOut; FIXME
+    signal EXMEM_MEMWB_MemToReg : std_logic ;
+    signal EXMEM_MEMWB_RegDst   : std_logic ;
+    signal EXMEM_MEMWB_RegWrite : std_logic ;
+    signal DM_MEMWB_ReadData    : std_logic_vector(31 downto 0) ;
+    signal EXMEM_MEMWB_TargetReg : std_logic_vector(4 downto 0) ;
+    -- ALUResultIn from EXMEM_MEMWB_ALUResultOut; FIXME
     component MEM_WB is
         port (
             Clock           : in std_logic;
@@ -258,12 +258,12 @@ architecture Behavior of MIPS is
             RegWriteOut       : out std_logic
         );
     end component MEM_WB;
-    signal MEMWB_MemToRegOut: std_logic := '0'; -- Output Control signal from the MEMWB Pipe Regs
-    signal MEMWB_Mux_ReadDataOut: std_logic_vector(31 downto 0) := x"00000000";
-    signal MEMWB_Mux_ALUResultOut: std_logic_vector(31 downto 0) := x"00000000";
+    signal MEMWB_MemToRegOut: std_logic; -- Output Control signal from the MEMWB Pipe Regs
+    signal MEMWB_Mux_ReadDataOut: std_logic_vector(31 downto 0) ;
+    signal MEMWB_Mux_ALUResultOut: std_logic_vector(31 downto 0) ;
     --------------------------------------------WB-------------------------------------------
-    signal MUX_DestWriteRegister: std_logic_vector(4 downto 0) := "00000"; -- used in ID stage
-    signal EX_MUX_Out_ALURightOperand : std_logic_vector(31 downto 0):= x"00000000"; 
+    signal MUX_DestWriteRegister: std_logic_vector(4 downto 0) ; -- used in ID stage
+    signal EX_MUX_Out_ALURightOperand : std_logic_vector(31 downto 0) ; 
     component MuxNBit is
         generic (
             N : integer := 1
@@ -398,7 +398,7 @@ begin
             MemReadOut     => IDEX_EXMEM_MemRead,
             MemWriteOut    => IDEX_EXMEM_MemWrite,
             MemToRegOut    => IDEX_EXMEM_MemToReg,
-            RegWriteOut    => EXMEM_MEMWB_RegWrite
+            RegWriteOut    => IDEX_EXMEM_RegWrite
             );
 --------------------------------------EX---------------------------------------
     Instruction_Execute_ALUControl:
@@ -413,7 +413,6 @@ begin
             MuxInput_1 => IDEX_Mux_Immediate,
             MuxInput_0 => IDEX_Mux_ReadData2,
             MuxOutput  => EX_MUX_Out_ALURightOperand
-
         );
     Instruction_Execute_ALU:
         ALU port map(
@@ -439,7 +438,7 @@ begin
                 
             EXMEMInstOut => EXMEM_InstOut,
             TargetRegOut => EXMEM_MEMWB_TargetReg,
-            ALUResultOut => ALU_EXMEM_ALUResultOut,
+            ALUResultOut => EXMEM_MEMWB_ALUResultOut,
             ReadData2Out => EXMEM_DM_ReadData2Out,
             MemReadOut  => EXMEM_DM_MemRead,
             MemWriteOut => EXMEM_DM_MemWrite,
@@ -450,7 +449,7 @@ begin
         DataMemory port map(
             MemRead  => EXMEM_DM_MemRead,-- controller signals
             MemWrite => EXMEM_DM_MemWrite,-- controller signals
-            Address  => ALU_EXMEM_ALUResultOut,-- Input from ALU
+            Address  => EXMEM_MEMWB_ALUResultOut,-- Input from ALU
             WriteData=> EXMEM_DM_ReadData2Out,
             ReadData => DM_MEMWB_ReadData-- Output for Write Back
         );
@@ -458,7 +457,7 @@ begin
         MEM_WB port map(
             Clock        => Clock, 
             ReadDataIn   => DM_MEMWB_ReadData,
-            ALUResultIn  => ALU_EXMEM_ALUResultOut,
+            ALUResultIn  => EXMEM_MEMWB_ALUResultOut,
             TargetRegIn  => EXMEM_MEMWB_TargetReg,
             RegWrite     => EXMEM_MEMWB_RegWrite,
             -- WB signals
@@ -486,7 +485,7 @@ begin
     begin
 
         -- wait for 2 * TbPeriod;
-        CHU_PC_PrevInstAddress <= x"00000000";
+        -- CHU_PC_PrevInstAddress <= x"00000000";
         -- IFID_CHU_PCPlus4 <= CHU_PC_PrevInstAddress + 4;
 
         wait for 6 * TbPeriod;

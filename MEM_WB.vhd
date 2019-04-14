@@ -27,7 +27,7 @@ architecture Behavior of MEM_WB is
 begin
   MEM_WB : process( Clock )
   begin
-    if rising_edge(Clock) then
+    if falling_edge(Clock) then
       TargetRegOut <= TargetRegIn;
       ReadDataOut <= ReadDataIn;
       ALUResultOut <= ALUResultIn;

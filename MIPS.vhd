@@ -9,7 +9,7 @@ end entity ; -- MIPS
 architecture Behavior of MIPS is
     -------------------------------IF----------------------------------------
     signal DHU_PC_PCStall   : std_logic ;
-    signal CHU_PC_PrevInstAddress  : std_logic_vector(31 downto 0) ;
+    signal CHU_Mux_NextAddress  : std_logic_vector(31 downto 0) ;
     component PC is
         port (
             Clock           : in std_logic;
@@ -31,7 +31,7 @@ architecture Behavior of MIPS is
             Adder_output: out std_logic_vector(31 downto 0)
         );
     end component Adder;
-    signal Adder_IFID_PCIn  : std_logic_vector(31 downto 0); -- Holds result of PC+4
+    signal Adder_Mux_PCPlus4  : std_logic_vector(31 downto 0); -- Holds result of PC+4
     signal DHU_IFID_Stall   : std_logic;
     signal CHU_IFID_Flush   : std_logic;
     signal IM_IFID_InstIn   : std_logic_vector(31 downto 0); -- 32 bit address for holding the instruction after fetching from IM
@@ -280,13 +280,15 @@ architecture Behavior of MIPS is
     constant TbPeriod : time := 20 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
     signal TbSimEnded : std_logic := '0';
+
+    signal Mux_IFIDPC_NextAddress: std_logic_vector(31 downto 0) ;
 begin
    ----------------------------------------------PORT MAPS-------------------------------------------
     Program_Counter:
         PC port map(
             Clock           => Clock,
             PCStall         => DHU_PC_PCStall,
-            PrevInstAddress => CHU_PC_PrevInstAddress,
+            PrevInstAddress => Mux_IFIDPC_NextAddress,
             NextInstAddress => PC_IM_NextInstAddress
         );
     Instruction_Fetch:
@@ -297,14 +299,21 @@ begin
     Instruction_Fetch_Adder:
         Adder port map(
             Adder_input => PC_IM_NextInstAddress,
-            Adder_output => Adder_IFID_PCIn  
+            Adder_output => Adder_Mux_PCPlus4  
+        );
+    Instruction_Fetch_Mux:
+        MuxNBit generic map( N => 32) port map (
+            MuxControlInput => CHU_IFID_Flush,
+            MuxInput_0 => Adder_Mux_PCPlus4,
+            MuxInput_1 => CHU_Mux_NextAddress,
+            MuxOutput => Mux_IFIDPC_NextAddress
         );
     Instruction_Fetch_IFID:
         IF_ID port map(
             Clock => Clock,
             IFIDStall => DHU_IFID_Stall,
             IFIDFlush => CHU_IFID_Flush,
-            PCIn => Adder_IFID_PCIn,
+            PCIn => Mux_IFIDPC_NextAddress,
             InstructionIn => IM_IFID_InstIn,
             PCOut => IFID_CHU_PCPlus4,
             InstructionOut => IFID_InstOut
@@ -360,7 +369,7 @@ begin
             Immediate   => SignExtend_IDEX,
             OpCode      => IFID_InstOut(31 downto 29),
             Funct       => IFID_InstOut(8 downto 0),
-            NewPc       => CHU_PC_PrevInstAddress,
+            NewPc       => CHU_Mux_NextAddress,
             IFIDFlush   => CHU_IFID_Flush
         );
     Instruction_Decode_SignExtend:
@@ -485,8 +494,8 @@ begin
     begin
 
         -- wait for 2 * TbPeriod;
-        -- CHU_PC_PrevInstAddress <= x"00000000";
-        -- IFID_CHU_PCPlus4 <= CHU_PC_PrevInstAddress + 4;
+        -- CHU_Mux_NextAddress <= x"00000000";
+        -- IFID_CHU_PCPlus4 <= CHU_Mux_NextAddress + 4;
 
         wait for 6 * TbPeriod;
 

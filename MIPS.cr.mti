@@ -1,13 +1,4 @@
-C:/Users/onthe/Desktop/MIPSCOEN6741/Mux32.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/Mux32.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity Mux32
--- Compiling architecture Behavior of Mux32
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/MEM_WB.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/MEM_WB.vhd
+C:/Users/onthe/Desktop/MIPSCOEN6741/MEM_WB.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/MEM_WB.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -15,6 +6,15 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package NUMERIC_STD
 -- Compiling entity MEM_WB
 -- Compiling architecture Behavior of MEM_WB
+
+} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/Mux32.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/Mux32.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity Mux32
+-- Compiling architecture Behavior of Mux32
 
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/MIPS.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/MIPS.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -25,15 +25,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity MIPS
 -- Compiling architecture Behavior of MIPS
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/SignExtend.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/SignExtend.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity SignExtend
--- Compiling architecture Behavior of SignExtend
-
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/ID_EX.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/ID_EX.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -42,6 +33,15 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package NUMERIC_STD
 -- Compiling entity ID_EX
 -- Compiling architecture Behavior of ID_EX
+
+} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/SignExtend.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/SignExtend.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity SignExtend
+-- Compiling architecture Behavior of SignExtend
 
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/ALU.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/ALU.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -52,15 +52,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity ALU
 -- Compiling architecture Behavior of ALU
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity PC
--- Compiling architecture Behavior of PC
-
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/IF_ID.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/IF_ID.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -69,6 +60,15 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package NUMERIC_STD
 -- Compiling entity IF_ID
 -- Compiling architecture Behavior of IF_ID
+
+} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity PC
+-- Compiling architecture Behavior of PC
 
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/EX_MEM.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/EX_MEM.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -79,15 +79,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity EX_MEM
 -- Compiling architecture Behavior of EX_MEM
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity DataMemory
--- Compiling architecture Behavior of DataMemory
-
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/ALUControl.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/ALUControl.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -97,14 +88,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity ALUControl
 -- Compiling architecture Behavior of ALUControl
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/Controller.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/Controller.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity Controller
--- Compiling architecture Behavior of Controller
-
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/DataHazardUnit.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/DataHazardUnit.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -113,6 +96,14 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package NUMERIC_STD
 -- Compiling entity DataHazardUnit
 -- Compiling architecture Behavior of DataHazardUnit
+
+} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/Controller.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/Controller.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Controller
+-- Compiling architecture Behavior of Controller
 
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/MuxNBit.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/MuxNBit.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -143,14 +134,16 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity Adder
 -- Compiling architecture Behavior of Adder
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/InstructionMemory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/InstructionMemory.vhd
+} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/tb_DataHazardUnit.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/tb_DataHazardUnit.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity InstructionMemory
--- Compiling architecture Behavioral of InstructionMemory
+-- Compiling entity tb_DataHarzardUnit
+-- Compiling architecture tb of tb_DataHarzardUnit
+-- Compiling configuration cfg_tb_DataHarzardUnit
+-- Loading entity tb_DataHarzardUnit
+-- Loading architecture tb of tb_DataHarzardUnit
 
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/ControlHazardUnit.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/ControlHazardUnit.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -162,5 +155,14 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package STD_LOGIC_SIGNED
 -- Compiling entity ControlHazardUnit
 -- Compiling architecture Behavior of ControlHazardUnit
+
+} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/InstructionMemory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/InstructionMemory.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity InstructionMemory
+-- Compiling architecture Behavioral of InstructionMemory
 
 } {} {}}

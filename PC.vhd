@@ -11,6 +11,7 @@ library ieee ;
 entity PC is
   port (
     Clock           : in std_logic;
+    Reset           : in std_logic;
     PCStall         : in std_logic;
 
     PrevInstAddress : in std_logic_vector(31 downto 0);
@@ -21,10 +22,12 @@ end PC ;
 architecture Behavior of PC is
     -- signal PCAddressSignal : std_logic_vector(31 downto 0) := (others => '0');
 begin
-    PC : process( Clock, PCStall )
+    PC : process( Clock, PCStall, Reset )
     begin
         -- NextInstAddress <= PCAddressSignal;
-        if falling_edge(Clock) then
+        if Reset = '1' then
+            NextInstAddress <= (others => '0');
+        elsif falling_edge(Clock) then
             if PCStall = '1' then
                 NULL; -- hold PC
             else

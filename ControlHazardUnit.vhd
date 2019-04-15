@@ -11,6 +11,7 @@ library ieee ;
 entity ControlHazardUnit is
   port (
     Clock     : in std_logic;
+    Reset     : in std_logic;
     ReadData1 : in std_logic_vector(31 downto 0) ; -- output of register
     ReadData2 : in std_logic_vector(31 downto 0) ; -- output of register
     PCPlus4   : in std_logic_vector(31 downto 0) ;
@@ -54,8 +55,11 @@ begin
       --     IFIDFlush <= '0';
       --   end if ;
       -- end if ;
-      if falling_edge(Clock) then
-          IFIDFlush<='0';
+      if Reset = '1' then
+        IFIDFlush <= '0';
+        NewPC <= (others => '0');
+      elsif falling_edge(Clock) then
+        IFIDFlush<='0';
       end if ;
     end process ; -- ControlHazardUnit
 

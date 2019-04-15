@@ -21,7 +21,7 @@ architecture Behavior of ALU is
 
 begin
 
-    ALU : process( ALUControl )
+    ALU : process( ALUControl, LeftOperand, RightOperand )
     begin
         case( ALUControl ) is
         

@@ -47,7 +47,8 @@ begin
                 DataMemorySignal(to_integer(unsigned(Address) - DataMemoryOffset)/4) <= WriteData;
             when "10" => -- read
                 ReadData <= DataMemorySignal(to_integer(unsigned(Address) - DataMemoryOffset)/4);
-            when others => NULL; -- handle exceptions
+            when others => 
+                ReadData <= (others => '0'); -- handle exceptions
         
         end case ;
     end process ; -- DataMemory

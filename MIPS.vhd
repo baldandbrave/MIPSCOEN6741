@@ -13,6 +13,7 @@ architecture Behavior of MIPS is
     component PC is
         port (
             Clock           : in std_logic;
+            Reset           : in std_logic;
             PCStall         : in std_logic;
             PrevInstAddress : in std_logic_vector(31 downto 0);
             NextInstAddress : out std_logic_vector(31 downto 0)
@@ -35,9 +36,11 @@ architecture Behavior of MIPS is
     signal DHU_IFID_Stall   : std_logic;
     signal CHU_IFID_Flush   : std_logic;
     signal IM_IFID_InstIn   : std_logic_vector(31 downto 0); -- 32 bit address for holding the instruction after fetching from IM
+    signal Mux_IFIDPC_NextAddress: std_logic_vector(31 downto 0) ;
     component IF_ID is
         port (
             Clock           : in std_logic;
+            Reset           : in std_logic;
             IFIDStall       : in std_logic;
             IFIDFlush       : in std_logic;
             -- PC+4
@@ -96,6 +99,7 @@ architecture Behavior of MIPS is
     component ControlHazardUnit is
         port (
             Clock     : in std_logic;
+            Reset     : in std_logic;
             ReadData1 : in std_logic_vector(31 downto 0) ; -- output of register
             ReadData2 : in std_logic_vector(31 downto 0) ; -- output of register
             PCPlus4   : in std_logic_vector(31 downto 0) ;
@@ -130,6 +134,7 @@ architecture Behavior of MIPS is
     component ID_EX is
         port (
             Clock           : in std_logic;
+            Reset           : in std_logic;
             IDEXFlush       : in std_logic;
             IFIDInstIn      : in std_logic_vector(31 downto 0) ;
             TargetRegIn     : in std_logic_vector(4 downto 0) ;
@@ -197,7 +202,7 @@ architecture Behavior of MIPS is
     component EX_MEM is
         port (
             Clock           : in std_logic;
-
+            Reset           : in std_logic;
             IDEXInstIn      : in std_logic_vector(31 downto 0) ;
             ALUResultIn     : in std_logic_vector(31 downto 0) ;
             ReadData2In     : in std_logic_vector(31 downto 0) ;
@@ -245,6 +250,7 @@ architecture Behavior of MIPS is
     component MEM_WB is
         port (
             Clock           : in std_logic;
+            Reset           : in std_logic;
             ReadDataIn      : in std_logic_vector(31 downto 0) ;
             ALUResultIn     : in std_logic_vector(31 downto 0) ;
             TargetRegIn     : in std_logic_vector(4 downto 0) ;
@@ -277,16 +283,17 @@ architecture Behavior of MIPS is
     
     end component MuxNBit;
     signal Clock   : std_logic;
+    signal Reset   : std_logic;
     constant TbPeriod : time := 20 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
     signal TbSimEnded : std_logic := '0';
 
-    signal Mux_IFIDPC_NextAddress: std_logic_vector(31 downto 0) ;
 begin
    ----------------------------------------------PORT MAPS-------------------------------------------
     Program_Counter:
         PC port map(
             Clock           => Clock,
+            Reset           => Reset,
             PCStall         => DHU_PC_PCStall,
             PrevInstAddress => Mux_IFIDPC_NextAddress,
             NextInstAddress => PC_IM_NextInstAddress
@@ -311,6 +318,7 @@ begin
     Instruction_Fetch_IFID:
         IF_ID port map(
             Clock => Clock,
+            Reset => Reset,
             IFIDStall => DHU_IFID_Stall,
             IFIDFlush => CHU_IFID_Flush,
             PCIn => Mux_IFIDPC_NextAddress,
@@ -363,6 +371,7 @@ begin
     CHU:
         ControlHazardUnit port map(
             Clock       => Clock,
+            Reset       => Reset,
             ReadData1   => Reg_IDEX_ReadData1,
             ReadData2   => Reg_IDEX_ReadData2,
             PCPlus4     => IFID_CHU_PCPlus4,
@@ -380,6 +389,7 @@ begin
     Instruction_Execute_ID_EX:
         ID_EX port map(
             Clock          => Clock,
+            Reset          => Reset,
             IDEXFlush      => CHU_IFID_Flush,
             IFIDInstIn     => IFID_InstOut(31 downto 0),
             TargetRegIn    => Mux_IDEX_TargetReg,
@@ -434,6 +444,7 @@ begin
     MemoryRW_EX_MEM:
         EX_MEM port map(
             Clock      => Clock, 
+            Reset      => Reset,
             IDEXInstIn => IDEX_InstOut,
             TargetRegIn => IDEX_EXMEM_TargetReg,
             ALUResultIn => ALU_EXMEM_ALUResult,
@@ -465,6 +476,7 @@ begin
     WriteBack_MEM_WB:
         MEM_WB port map(
             Clock        => Clock, 
+            Reset        => Reset,
             ReadDataIn   => DM_MEMWB_ReadData,
             ALUResultIn  => EXMEM_MEMWB_ALUResultOut,
             TargetRegIn  => EXMEM_MEMWB_TargetReg,
@@ -492,12 +504,14 @@ begin
 ----------------------------Stimulation Process------------------------------
     Simu : process
     begin
-
+        Reset <= '1';
+        wait for 0.8 * TbPeriod;
+        Reset <= '0';
         -- wait for 2 * TbPeriod;
         -- CHU_Mux_NextAddress <= x"00000000";
         -- IFID_CHU_PCPlus4 <= CHU_Mux_NextAddress + 4;
 
-        wait for 6 * TbPeriod;
+        wait for 16.4 * TbPeriod;
 
         TbSimEnded <= '1';
         wait;

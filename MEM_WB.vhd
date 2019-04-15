@@ -6,6 +6,7 @@ library ieee ;
 entity MEM_WB is
   port (
     Clock           : in std_logic;
+    Reset           : in std_logic;
 
     ReadDataIn      : in std_logic_vector(31 downto 0) ;
     ALUResultIn     : in std_logic_vector(31 downto 0) ;
@@ -25,9 +26,15 @@ end MEM_WB ;
 architecture Behavior of MEM_WB is
 
 begin
-  MEM_WB : process( Clock )
+  MEM_WB : process( Clock, Reset )
   begin
-    if falling_edge(Clock) then
+    if Reset ='1' then
+      TargetRegOut <= (others => '0');
+      ReadDataOut  <= (others => '0');
+      ALUResultOut <= (others => '0');
+      MemToRegOut  <= '0';
+      RegWriteOut  <= '0';
+    elsif falling_edge(Clock) then
       TargetRegOut <= TargetRegIn;
       ReadDataOut <= ReadDataIn;
       ALUResultOut <= ALUResultIn;

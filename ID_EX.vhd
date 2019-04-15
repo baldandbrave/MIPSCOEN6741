@@ -5,6 +5,7 @@ library ieee ;
 entity ID_EX is
   port (
     Clock           : in std_logic;
+    Reset           : in std_logic;
     IDEXFlush       : in std_logic;
 
     IFIDInstIn      : in std_logic_vector(31 downto 0) ;
@@ -42,9 +43,22 @@ end ID_EX ;
 architecture Behavior of ID_EX is
 
 begin
-    ID_EX : process( Clock, IDEXFlush )
+    ID_EX : process( Clock, IDEXFlush, Reset)
     begin
-        if falling_edge(Clock) then
+        if Reset = '1' then
+            ReadData1Out <= (others => '0');
+            ReadData2Out <= (others => '0');
+            SignExtendOut <= (others => '0');
+            FuctionCodeOut <= (others => '0');
+            IDEXInstOut <= (others => '0');
+            TargetRegOut <= (others => '0');
+            ALUSrcOut    <= '0';
+            ALUOpOut     <= "00";
+            MemReadOut   <= '0';
+            MemWriteOut  <= '0';
+            MemToRegOut  <= '0';
+            RegWriteOut  <= '0';
+        elsif falling_edge(Clock) then
             if IDEXFlush = '1' then
                 ReadData1Out <= (others => '0');
                 ReadData2Out <= (others => '0');
@@ -52,6 +66,12 @@ begin
                 FuctionCodeOut <= (others => '0');
                 IDEXInstOut <= (others => '0');
                 TargetRegOut <= (others => '0');
+                ALUSrcOut    <= '0';
+                ALUOpOut     <= "00";
+                MemReadOut   <= '0';
+                MemWriteOut  <= '0';
+                MemToRegOut  <= '0';
+                RegWriteOut  <= '0';
             else
                 IDEXInstOut <= IFIDInstIn;
                 TargetRegOut <= TargetRegIn;

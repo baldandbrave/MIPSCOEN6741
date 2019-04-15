@@ -34,7 +34,7 @@ begin
       ALUResultOut <= (others => '0');
       MemToRegOut  <= '0';
       RegWriteOut  <= '0';
-    elsif falling_edge(Clock) then
+    elsif rising_edge(Clock) then
       TargetRegOut <= TargetRegIn;
       ReadDataOut <= ReadDataIn;
       ALUResultOut <= ALUResultIn;

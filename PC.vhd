@@ -27,7 +27,7 @@ begin
         -- NextInstAddress <= PCAddressSignal;
         if Reset = '1' then
             NextInstAddress <= (others => '0');
-        elsif falling_edge(Clock) then
+        elsif rising_edge(Clock) then
             if PCStall = '1' then
                 NULL; -- hold PC
             else

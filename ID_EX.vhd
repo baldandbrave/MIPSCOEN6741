@@ -58,7 +58,7 @@ begin
             MemWriteOut  <= '0';
             MemToRegOut  <= '0';
             RegWriteOut  <= '0';
-        elsif falling_edge(Clock) then
+        elsif rising_edge(Clock) then
             if IDEXFlush = '1' then
                 ReadData1Out <= (others => '0');
                 ReadData2Out <= (others => '0');

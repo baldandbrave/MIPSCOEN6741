@@ -43,7 +43,7 @@ begin
       MemWriteOut     <= '0';
       MemToRegOut     <= '0';
       RegWriteOut     <= '0';
-    elsif falling_edge(Clock) then
+    elsif rising_edge(Clock) then
       EXMEMInstOut <= IDEXInstIn;
       TargetRegOut <= TargetRegIn;
       ALUResultOut <= ALUResultIn;

@@ -34,7 +34,10 @@ begin
   ControlHazardUnit : process(OpCode, Funct, ReadData1, ReadData2, Clock)
     begin
       XorResult <= ReadData1 xor ReadData2;
-      if (XorResult= x"00000000") and (Opcode = "011") then -- beq
+      if Reset = '1' then
+        IFIDFlush <= '0';
+        NewPC <= (others => '0');
+      elsif (XorResult= x"00000000") and (Opcode = "011") then -- beq
         NewPC <= PCPlus4 + Immediate ; 
         -- FlushCounter <= 1;
         IFIDFlush <= '1';
@@ -55,10 +58,7 @@ begin
       --     IFIDFlush <= '0';
       --   end if ;
       -- end if ;
-      if Reset = '1' then
-        IFIDFlush <= '0';
-        NewPC <= (others => '0');
-      elsif falling_edge(Clock) then
+      if falling_edge(Clock) then
         IFIDFlush<='0';
       end if ;
     end process ; -- ControlHazardUnit

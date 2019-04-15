@@ -27,7 +27,7 @@ begin
         if Reset = '1' then
             InstructionOut <= x"01080000";
             PCOut <= (others => '0');
-        elsif falling_edge(Clock) then
+        elsif rising_edge(Clock) then
             if IFIDStall = '1' then -- hold output
                 NULL;
             elsif IFIDFlush = '1' then -- set output to 0.

@@ -52,15 +52,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity ALU
 -- Compiling architecture Behavior of ALU
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity DataMemory
--- Compiling architecture Behavior of DataMemory
-
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/IF_ID.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/IF_ID.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -70,15 +61,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity IF_ID
 -- Compiling architecture Behavior of IF_ID
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity PC
--- Compiling architecture Behavior of PC
-
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/EX_MEM.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/EX_MEM.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -87,6 +69,24 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package NUMERIC_STD
 -- Compiling entity EX_MEM
 -- Compiling architecture Behavior of EX_MEM
+
+} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity DataMemory
+-- Compiling architecture Behavior of DataMemory
+
+} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/PC.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity PC
+-- Compiling architecture Behavior of PC
 
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/ALUControl.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/ALUControl.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -154,15 +154,13 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading entity tb_DataHarzardUnit
 -- Loading architecture tb of tb_DataHarzardUnit
 
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/ControlHazardUnit.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/ControlHazardUnit.vhd
+} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/InstructionMemory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/InstructionMemory.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_SIGNED
--- Compiling entity ControlHazardUnit
--- Compiling architecture Behavior of ControlHazardUnit
+-- Compiling entity InstructionMemory
+-- Compiling architecture Behavioral of InstructionMemory
 
 } {} {}}

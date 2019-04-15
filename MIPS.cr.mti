@@ -52,6 +52,15 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity ALU
 -- Compiling architecture Behavior of ALU
 
+} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/DataMemory.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity DataMemory
+-- Compiling architecture Behavior of DataMemory
+
 } {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/IF_ID.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/IF_ID.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -155,14 +164,5 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package STD_LOGIC_SIGNED
 -- Compiling entity ControlHazardUnit
 -- Compiling architecture Behavior of ControlHazardUnit
-
-} {} {}} C:/Users/onthe/Desktop/MIPSCOEN6741/InstructionMemory.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/onthe/Desktop/MIPSCOEN6741/InstructionMemory.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity InstructionMemory
--- Compiling architecture Behavioral of InstructionMemory
 
 } {} {}}

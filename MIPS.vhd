@@ -511,7 +511,7 @@ begin
         -- CHU_Mux_NextAddress <= x"00000000";
         -- IFID_CHU_PCPlus4 <= CHU_Mux_NextAddress + 4;
 
-        wait for 16.4 * TbPeriod;
+        wait for 19.4 * TbPeriod;
 
         TbSimEnded <= '1';
         wait;
